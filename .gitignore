@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter
+*.ipynb_checkpoints
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Dados pesados (mantemos apenas a camada Gold/amostra usada no projeto,
+# arquivos brutos/binarios grandes nao sao versionados)
+data/raw/**/*.parquet
+data/processed/**/*.parquet
+*.parquet
+data/**/*.zip
+data/**/*.7z
+
+# Modelos treinados (artefatos binarios)
+*.pkl
+*.joblib
+models/*.bin
+
+# Logs
+*.log

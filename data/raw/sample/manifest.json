@@ -1,0 +1,14 @@
+{
+  "fonte": "amostra_sintetica_offline",
+  "ponto_corte": 743,
+  "entidades": [
+    "uf",
+    "municipio",
+    "meta_brasil",
+    "meta_uf",
+    "meta_municipio",
+    "indicador_municipio",
+    "alunos"
+  ],
+  "nota": "Substituir por Base dos Dados em produção"
+}
