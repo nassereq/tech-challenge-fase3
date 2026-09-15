@@ -60,10 +60,12 @@ público técnico.
 > que metas bem comunicadas e ambiciosas realmente correlacionam com resultado, reforçando o valor de
 > manter e comunicar bem o Compromisso Nacional Criança Alfabetizada.
 >
-> **Terceiro, e mais desafiador:** ainda existe **desigualdade regional significativa** — municípios do
-> Norte e Nordeste seguem, em média, com taxas de alfabetização mais baixas, mesmo controlando por
-> histórico municipal. Isso não é surpresa para quem trabalha com educação no Brasil, mas agora temos um
-> modelo que quantifica exatamente o tamanho desse gap, ano a ano."
+> **Terceiro:** existe **heterogeneidade regional significativa** nos dados analisados — o que reforça um
+> ponto metodológico importante: como ainda trabalhamos com uma amostra sintética de demonstração, não
+> podemos usar essa base para tirar conclusão sobre qual região do Brasil está pior hoje. O valor real aqui
+> é outro: já validamos que o modelo é sensível a diferenças regionais e consegue quantificar esse tipo de
+> gap — assim que plugarmos dados reais do INEP, a mesma metodologia vai gerar o diagnóstico regional
+> verdadeiro, região a região."
 
 **Tela:** `shap_summary.png` (fatores de maior impacto) e `eda_regiao_vs_target.png` (desigualdade
 regional).
