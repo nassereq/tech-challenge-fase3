@@ -37,7 +37,8 @@ models/*.bin
 # Logs
 *.log
 
-# Build de apresentacoes (Claude Design canvas): versionamos apenas o
-# codigo-fonte dos slides (.dc.html/canvas.json), nao o bundle publicado
-reports/apresentacao_executiva/*.html
-!reports/apresentacao_executiva/*.dc.html
+# Build de apresentacoes (Claude Design canvas): versionamos o codigo-fonte
+# dos slides (.dc.html/canvas.json) e a versao estatica local
+# (apresentacao.html), mas nao o bundle publicado no Claude (~2.5MB, inclui
+# o editor inteiro embutido)
+reports/apresentacao_executiva/apresentacao-executiva-alfabetizacao.html

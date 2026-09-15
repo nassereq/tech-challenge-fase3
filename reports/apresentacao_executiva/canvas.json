@@ -12,5 +12,5 @@
     { "file": "Slide10_Limitacoes.dc.html", "x": 18180, "y": 0, "w": 1920, "h": 1080, "print": "fixed" },
     { "file": "Slide11_Encerramento.dc.html", "x": 20200, "y": 0, "w": 1920, "h": 1080, "print": "fixed" }
   ],
-  "launch": { "view": "focused", "file": "Main.dc.html" }
+  "launch": { "view": "canvas" }
 }

@@ -309,3 +309,9 @@ educacional?" e "quais regiões possuem padrões semelhantes?" propostas no desa
 O roteiro cronometrado (até 5 minutos) para a apresentação executiva simulando uma reunião com
 secretários de educação está em
 [`reports/roteiro_video_executivo.md`](reports/roteiro_video_executivo.md).
+
+Os slides de apoio (11 telas, seguindo os 6 blocos do roteiro) estão em
+[`reports/apresentacao_executiva/apresentacao.html`](reports/apresentacao_executiva/apresentacao.html) —
+um arquivo único e autocontido: basta abrir com dois cliques em qualquer navegador (não depende de
+internet, conta ou instalação). Use as setas do teclado (ou os botões na tela) para navegar, `F` para
+tela cheia. O código-fonte editável de cada slide (`.dc.html`) fica na mesma pasta.

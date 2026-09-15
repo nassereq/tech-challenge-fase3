@@ -1,0 +1,847 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apresentação Executiva — Predição e Inteligência Analítica para Alfabetização no Brasil</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; height:100%; background:#0A1729; overflow:hidden; }
+  a { color:#9C6B1F; }
+  a:hover { color:#7A5417; }
+
+  #stage { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; }
+  .slide {
+    width:1920px; height:1080px; flex-shrink:0;
+    position:absolute; top:50%; left:50%;
+    transform-origin: center center;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    display:none;
+  }
+  .slide.active { display:block; }
+
+  #hud {
+    position:fixed; left:0; right:0; bottom:0; height:64px;
+    display:flex; align-items:center; justify-content:center; gap:20px;
+    font-family:'Public Sans', system-ui, sans-serif; z-index:50;
+    background:rgba(10,23,41,0.0);
+    pointer-events:none;
+  }
+  #hud > * { pointer-events:auto; }
+  .nav-btn {
+    width:44px; height:44px; border-radius:50%; border:1px solid rgba(255,255,255,0.35);
+    background:rgba(15,32,56,0.6); color:#F3E4CB; font-size:20px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px);
+    transition: background .15s ease;
+  }
+  .nav-btn:hover { background:rgba(192,138,52,0.85); border-color:#C08A34; }
+  .nav-btn:disabled { opacity:0.3; cursor:default; }
+  .nav-btn:disabled:hover { background:rgba(15,32,56,0.6); }
+  #counter {
+    font:600 15px 'Public Sans'; color:#DCE6F0; background:rgba(15,32,56,0.6);
+    border:1px solid rgba(255,255,255,0.2); border-radius:20px; padding:8px 18px;
+    backdrop-filter:blur(4px); min-width:64px; text-align:center;
+  }
+  #fs-btn {
+    position:fixed; top:20px; right:24px; z-index:50;
+  }
+  .clickzone { position:fixed; top:0; bottom:64px; width:18%; z-index:20; cursor:pointer; }
+  #zone-prev { left:0; }
+  #zone-next { right:0; }
+
+  @media print {
+    html, body { overflow:visible; background:#fff; }
+    #hud, #fs-btn, .clickzone { display:none !important; }
+    #stage { position:static; display:block; }
+    .slide {
+      display:block !important; position:relative; top:0; left:0; transform:none !important;
+      width:100%; height:100vh; page-break-after:always; box-shadow:none;
+      overflow:hidden;
+    }
+    .slide > div { width:1920px; height:1080px; transform:scale(0.545); transform-origin:top left; }
+  }
+</style>
+</head>
+<body>
+
+<div id="stage">
+
+<!-- ===================== SLIDE 1 ===================== -->
+<div class="slide active" data-i="1">
+<div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#0F2038; font-family:'Public Sans', system-ui, sans-serif; color:#F3E4CB;">
+  <div style="position:absolute; top:-220px; right:-220px; width:900px; height:900px; border-radius:50%; background:radial-gradient(circle at 30% 30%, #1D3F63 0%, #0F2038 70%); opacity:0.9;"></div>
+  <div style="position:absolute; left:0; top:0; bottom:0; width:14px; background:#C08A34;"></div>
+  <div style="position:relative; padding:120px 140px 0 160px;">
+    <div style="font:600 20px/1 'Public Sans'; letter-spacing:0.18em; text-transform:uppercase; color:#C08A34;">
+      Tech Challenge &middot; Fase 3 &middot; P&oacute;s Tech FIAP
+    </div>
+    <h1 style="font:700 76px/1.12 'Source Serif 4'; color:#FFFFFF; margin:32px 0 0; max-width:1360px;">
+      Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil
+    </h1>
+    <p style="font:400 28px/1.5 'Public Sans'; color:#DCE6F0; max-width:1080px; margin:40px 0 0;">
+      Reuni&atilde;o executiva &mdash; como transformar o Indicador Crian&ccedil;a Alfabetizada em um radar de
+      risco antecipado para gestores p&uacute;blicos.
+    </p>
+    <div style="margin-top:88px; display:flex; gap:64px; align-items:center;">
+      <div style="width:64px; height:2px; background:#C08A34;"></div>
+      <div style="font:500 20px/1.4 'Public Sans'; color:#B9C4D0;">
+        [Nome da equipe / integrantes] &middot; [Turma / RM]
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0A1729; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#8EA0B4;">
+    <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
+    <span>01 / 11</span>
+  </div>
+</div>
+</div>
+
+<!-- ===================== SLIDE 2 ===================== -->
+<div class="slide" data-i="2">
+<div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#FAF6EF; font-family:'Public Sans', system-ui, sans-serif; color:#17222E;">
+  <div style="padding:96px 140px 0 160px;">
+    <div style="font:600 18px/1 'Public Sans'; letter-spacing:0.16em; text-transform:uppercase; color:#9C6B1F;">
+      Bloco 1 &middot; O Problema
+    </div>
+    <h1 style="font:700 54px/1.2 'Source Serif 4'; color:#0F2038; margin:24px 0 0; max-width:1240px;">
+      Hoje s&oacute; sabemos quem foi alfabetizado depois que o resultado sai.
+    </h1>
+    <p style="font:400 26px/1.55 'Public Sans'; color:#55606B; max-width:1180px; margin:28px 0 0;">
+      E se pud&eacute;ssemos antecipar esse diagn&oacute;stico &mdash; ainda durante o ano letivo &mdash; e agir
+      antes do resultado final, n&atilde;o depois?
+    </p>
+  </div>
+  <div style="display:flex; gap:80px; padding:64px 140px 0 160px; align-items:flex-end;">
+    <div style="flex:1.15; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:44px 48px;">
+      <div style="font:600 16px/1 'Public Sans'; letter-spacing:0.1em; text-transform:uppercase; color:#55606B; margin-bottom:32px;">
+        Taxa de alfabetiza&ccedil;&atilde;o &mdash; evolu&ccedil;&atilde;o anual
+      </div>
+      <div style="display:flex; align-items:flex-end; gap:56px; height:340px;">
+        <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;">
+          <div style="font:700 30px 'Source Serif 4'; color:#0F2038; margin-bottom:10px;">36,7%</div>
+          <div style="width:120px; height:124px; background:#DCE6F0; border-radius:3px 3px 0 0;"></div>
+          <div style="font:500 20px 'Public Sans'; color:#55606B; margin-top:14px;">2021</div>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;">
+          <div style="font:700 30px 'Source Serif 4'; color:#0F2038; margin-bottom:10px;">49,9%</div>
+          <div style="width:120px; height:169px; background:#9BB4CC; border-radius:3px 3px 0 0;"></div>
+          <div style="font:500 20px 'Public Sans'; color:#55606B; margin-top:14px;">2022</div>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;">
+          <div style="font:700 34px 'Source Serif 4'; color:#9C6B1F; margin-bottom:10px;">73,3%</div>
+          <div style="width:120px; height:248px; background:#C08A34; border-radius:3px 3px 0 0;"></div>
+          <div style="font:600 20px 'Public Sans'; color:#0F2038; margin-top:14px;">2023</div>
+        </div>
+      </div>
+      <div style="font:400 17px/1.5 'Public Sans'; color:#8A93A0; margin-top:28px; max-width:520px;">
+        Base de alunos avaliados, 2021&ndash;2023 (amostra da camada Gold constru&iacute;da na Fase 2).
+      </div>
+    </div>
+    <div style="flex:1; padding-bottom:24px;">
+      <div style="border-left:4px solid #C08A34; padding-left:32px;">
+        <p style="font:600 30px/1.4 'Source Serif 4'; color:#0F2038; margin:0;">
+          A alfabetiza&ccedil;&atilde;o avan&ccedil;ou muito r&aacute;pido em 3 anos.
+        </p>
+        <p style="font:400 22px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
+          Isso &eacute; uma &oacute;tima not&iacute;cia &mdash; mas tamb&eacute;m um sinal de que o cen&aacute;rio
+          muda rapidamente. Gestores precisam de um jeito de enxergar risco
+          <strong style="color:#0F2038;">antes</strong> do pr&oacute;ximo resultado, n&atilde;o s&oacute; de olhar
+          para tr&aacute;s.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0F2038; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#B9C4D0;">
+    <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
+    <span>02 / 11</span>
+  </div>
+</div>
+</div>
+
+<!-- ===================== SLIDE 3 ===================== -->
+<div class="slide" data-i="3">
+<div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#FAF6EF; font-family:'Public Sans', system-ui, sans-serif; color:#17222E;">
+  <div style="padding:96px 140px 0 160px;">
+    <div style="font:600 18px/1 'Public Sans'; letter-spacing:0.16em; text-transform:uppercase; color:#9C6B1F;">
+      Bloco 2 &middot; O Que Constru&iacute;mos
+    </div>
+    <h1 style="font:700 52px/1.22 'Source Serif 4'; color:#0F2038; margin:24px 0 0; max-width:1400px;">
+      Um modelo que aprende com o hist&oacute;rico de cada munic&iacute;pio para estimar o risco antes do
+      resultado sair
+    </h1>
+  </div>
+  <div style="display:flex; align-items:stretch; gap:0; padding:96px 140px 0 160px;">
+    <div style="flex:1; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:36px 32px; display:flex; flex-direction:column; gap:18px;">
+      <div style="font:700 22px 'Source Serif 4'; color:#FFFFFF; width:48px; height:48px; border-radius:50%; background:#1D3F63; display:flex; align-items:center; justify-content:center; flex-shrink:0;">1</div>
+      <div style="font:700 24px/1.3 'Source Serif 4'; color:#0F2038; margin-top:8px;">Dados Gold</div>
+      <div style="font:400 18px/1.55 'Public Sans'; color:#55606B;">
+        Indicadores de alfabetiza&ccedil;&atilde;o, metas municipais/estaduais/nacionais e territ&oacute;rio,
+        constru&iacute;dos na Fase 2.
+      </div>
+    </div>
+    <svg width="64" height="220" viewBox="0 0 64 220" style="align-self:center; flex-shrink:0;">
+      <line x1="4" y1="110" x2="52" y2="110" stroke="#C08A34" stroke-width="3"/>
+      <path d="M40 96 L58 110 L40 124" fill="none" stroke="#C08A34" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div style="flex:1; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:36px 32px; display:flex; flex-direction:column; gap:18px;">
+      <div style="font:700 22px 'Source Serif 4'; color:#FFFFFF; width:48px; height:48px; border-radius:50%; background:#1D3F63; display:flex; align-items:center; justify-content:center; flex-shrink:0;">2</div>
+      <div style="font:700 24px/1.3 'Source Serif 4'; color:#0F2038; margin-top:8px;">Engenharia de atributos</div>
+      <div style="font:400 18px/1.55 'Public Sans'; color:#55606B;">
+        Hist&oacute;rico municipal do ano anterior, metas vigentes e regi&atilde;o &mdash; sem usar nada que
+        vaze o pr&oacute;prio resultado.
+      </div>
+    </div>
+    <svg width="64" height="220" viewBox="0 0 64 220" style="align-self:center; flex-shrink:0;">
+      <line x1="4" y1="110" x2="52" y2="110" stroke="#C08A34" stroke-width="3"/>
+      <path d="M40 96 L58 110 L40 124" fill="none" stroke="#C08A34" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div style="flex:1; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:36px 32px; display:flex; flex-direction:column; gap:18px;">
+      <div style="font:700 22px 'Source Serif 4'; color:#FFFFFF; width:48px; height:48px; border-radius:50%; background:#1D3F63; display:flex; align-items:center; justify-content:center; flex-shrink:0;">3</div>
+      <div style="font:700 24px/1.3 'Source Serif 4'; color:#0F2038; margin-top:8px;">3 modelos comparados</div>
+      <div style="font:400 18px/1.55 'Public Sans'; color:#55606B;">
+        Regress&atilde;o Log&iacute;stica, Random Forest e XGBoost, testados lado a lado com o mesmo crit&eacute;rio.
+      </div>
+    </div>
+    <svg width="64" height="220" viewBox="0 0 64 220" style="align-self:center; flex-shrink:0;">
+      <line x1="4" y1="110" x2="52" y2="110" stroke="#C08A34" stroke-width="3"/>
+      <path d="M40 96 L58 110 L40 124" fill="none" stroke="#C08A34" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div style="flex:1; background:#0F2038; border-radius:4px; padding:36px 32px; display:flex; flex-direction:column; gap:18px;">
+      <div style="font:700 22px 'Source Serif 4'; color:#FFFFFF; width:48px; height:48px; border-radius:50%; background:#C08A34; display:flex; align-items:center; justify-content:center; flex-shrink:0;">4</div>
+      <div style="font:700 24px/1.3 'Source Serif 4'; color:#FFFFFF; margin-top:8px;">Modelo campe&atilde;o</div>
+      <div style="font:400 18px/1.55 'Public Sans'; color:#DCE6F0;">
+        Random Forest, validado com valida&ccedil;&atilde;o cruzada e testado prevendo um ano que ele nunca viu (2023).
+      </div>
+    </div>
+  </div>
+  <div style="padding:64px 140px 0 160px; max-width:1300px;">
+    <p style="font:400 22px/1.6 'Public Sans'; color:#55606B; border-left:4px solid #C08A34; padding-left:32px; margin:0;">
+      Pr&eacute;-processamento e modelo vivem em um <strong style="color:#0F2038;">pipeline &uacute;nico e reprodut&iacute;vel</strong>
+      &mdash; nenhuma decis&atilde;o &eacute; manual ou espec&iacute;fica de uma planilha.
+    </p>
+  </div>
+  <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0F2038; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#B9C4D0;">
+    <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
+    <span>03 / 11</span>
+  </div>
+</div>
+</div>
+
+<!-- ===================== SLIDE 4 ===================== -->
+<div class="slide" data-i="4">
+<div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#FAF6EF; font-family:'Public Sans', system-ui, sans-serif; color:#17222E;">
+  <div style="padding:96px 140px 0 160px;">
+    <div style="font:600 18px/1 'Public Sans'; letter-spacing:0.16em; text-transform:uppercase; color:#9C6B1F;">
+      Bloco 2 &middot; Rigor T&eacute;cnico
+    </div>
+    <h1 style="font:700 52px/1.2 'Source Serif 4'; color:#0F2038; margin:24px 0 0; max-width:1400px;">
+      Encontramos e corrigimos dois vazamentos de informa&ccedil;&atilde;o antes de confiar no modelo
+    </h1>
+    <p style="font:400 24px/1.55 'Public Sans'; color:#55606B; max-width:1200px; margin:24px 0 0;">
+      Vazamento acontece quando o modelo, sem querer, tem acesso a informa&ccedil;&atilde;o que s&oacute;
+      existiria <em>depois</em> do resultado &mdash; e passa a "colar" em vez de prever de verdade.
+    </p>
+  </div>
+  <div style="display:flex; gap:56px; padding:64px 140px 0 160px;">
+    <div style="flex:1; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:44px 40px;">
+      <div style="display:inline-block; font:600 15px 'Public Sans'; letter-spacing:0.08em; text-transform:uppercase; color:#A85338; background:#F0DCD3; padding:6px 14px; border-radius:3px;">
+        Vazamento 1
+      </div>
+      <h2 style="font:700 30px/1.35 'Source Serif 4'; color:#0F2038; margin:24px 0 0;">
+        A nota j&aacute; continha a resposta
+      </h2>
+      <p style="font:400 21px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
+        A profici&ecirc;ncia do aluno na avalia&ccedil;&atilde;o definia matematicamente se ele seria
+        classificado como alfabetizado &mdash; usar essa nota seria prever o passado, n&atilde;o o futuro.
+      </p>
+      <div style="margin-top:28px; padding-top:24px; border-top:1px solid #E7DFCE; font:600 19px 'Public Sans'; color:#0F2038;">
+        Corre&ccedil;&atilde;o: removida do conjunto de vari&aacute;veis do modelo.
+      </div>
+    </div>
+    <div style="flex:1; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:44px 40px;">
+      <div style="display:inline-block; font:600 15px 'Public Sans'; letter-spacing:0.08em; text-transform:uppercase; color:#A85338; background:#F0DCD3; padding:6px 14px; border-radius:3px;">
+        Vazamento 2
+      </div>
+      <h2 style="font:700 30px/1.35 'Source Serif 4'; color:#0F2038; margin:24px 0 0;">
+        O indicador do munic&iacute;pio "sabia" o pr&oacute;prio resultado
+      </h2>
+      <p style="font:400 21px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
+        O percentual de alfabetiza&ccedil;&atilde;o do munic&iacute;pio no ano corrente j&aacute; inclu&iacute;a
+        o resultado do pr&oacute;prio aluno sendo avaliado pelo modelo.
+      </p>
+      <div style="margin-top:28px; padding-top:24px; border-top:1px solid #E7DFCE; font:600 19px 'Public Sans'; color:#0F2038;">
+        Corre&ccedil;&atilde;o: modelo usa apenas o hist&oacute;rico do ano anterior.
+      </div>
+    </div>
+  </div>
+  <div style="margin:64px 140px 0 160px; background:#0F2038; border-radius:4px; padding:32px 48px; display:flex; align-items:center; gap:24px;">
+    <div style="width:6px; height:56px; background:#C08A34; flex-shrink:0;"></div>
+    <p style="font:600 24px/1.5 'Source Serif 4'; color:#FFFFFF; margin:0;">
+      Sem essa corre&ccedil;&atilde;o, o modelo pareceria quase perfeito &mdash; e seria in&uacute;til na
+      pr&aacute;tica.
+    </p>
+  </div>
+  <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0F2038; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#B9C4D0;">
+    <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
+    <span>04 / 11</span>
+  </div>
+</div>
+</div>
+
+<!-- ===================== SLIDE 5 ===================== -->
+<div class="slide" data-i="5">
+<div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#FAF6EF; font-family:'Public Sans', system-ui, sans-serif; color:#17222E;">
+  <div style="padding:96px 140px 0 160px;">
+    <div style="font:600 18px/1 'Public Sans'; letter-spacing:0.16em; text-transform:uppercase; color:#9C6B1F;">
+      Bloco 2 &middot; Compara&ccedil;&atilde;o de Modelos
+    </div>
+    <h1 style="font:700 52px/1.2 'Source Serif 4'; color:#0F2038; margin:24px 0 0; max-width:1300px;">
+      Tr&ecirc;s abordagens testadas, uma vencedora
+    </h1>
+  </div>
+  <div style="display:flex; gap:72px; padding:72px 140px 0 160px;">
+    <div style="flex:1.3; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:48px;">
+      <div style="font:600 16px/1 'Public Sans'; letter-spacing:0.1em; text-transform:uppercase; color:#55606B; margin-bottom:8px;">
+        Poder preditivo (acaso puro = 0,50)
+      </div>
+      <div style="font:400 16px/1.4 'Public Sans'; color:#8A93A0; margin-bottom:36px;">
+        Medido prevendo 2023 &mdash; um ano que nenhum modelo viu durante o treino
+      </div>
+      <div style="display:flex; flex-direction:column; gap:30px;">
+        <div>
+          <div style="display:flex; align-items:center; gap:28px;">
+            <div style="width:280px; font:700 20px 'Public Sans'; color:#0F2038;">Random Forest &#9733;</div>
+            <div style="flex:1; height:40px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:83%; background:#C08A34; border-radius:4px;"></div></div>
+            <div style="width:80px; text-align:right; font:700 22px 'Source Serif 4'; color:#0F2038;">0,58</div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex; align-items:center; gap:28px;">
+            <div style="width:280px; font:500 20px 'Public Sans'; color:#55606B;">XGBoost</div>
+            <div style="flex:1; height:40px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:83%; background:#9BB4CC; border-radius:4px;"></div></div>
+            <div style="width:80px; text-align:right; font:600 22px 'Source Serif 4'; color:#55606B;">0,58</div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex; align-items:center; gap:28px;">
+            <div style="width:280px; font:500 20px 'Public Sans'; color:#55606B;">Regress&atilde;o Log&iacute;stica</div>
+            <div style="flex:1; height:40px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:80%; background:#9BB4CC; border-radius:4px;"></div></div>
+            <div style="width:80px; text-align:right; font:600 22px 'Source Serif 4'; color:#55606B;">0,56</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:40px; padding-top:28px; border-top:1px solid #E7DFCE; display:flex; gap:48px;">
+        <div>
+          <div style="font:600 15px 'Public Sans'; text-transform:uppercase; letter-spacing:0.08em; color:#8A93A0;">Precis&atilde;o</div>
+          <div style="font:700 28px 'Source Serif 4'; color:#0F2038; margin-top:6px;">77,9%</div>
+        </div>
+        <div>
+          <div style="font:600 15px 'Public Sans'; text-transform:uppercase; letter-spacing:0.08em; color:#8A93A0;">Recall</div>
+          <div style="font:700 28px 'Source Serif 4'; color:#0F2038; margin-top:6px;">82,9%</div>
+        </div>
+        <div>
+          <div style="font:600 15px 'Public Sans'; text-transform:uppercase; letter-spacing:0.08em; color:#8A93A0;">Modelo campe&atilde;o</div>
+          <div style="font:700 22px 'Source Serif 4'; color:#9C6B1F; margin-top:6px;">Random Forest</div>
+        </div>
+      </div>
+    </div>
+    <div style="flex:1; padding-top:16px;">
+      <div style="border-left:4px solid #C08A34; padding-left:32px;">
+        <p style="font:600 28px/1.45 'Source Serif 4'; color:#0F2038; margin:0;">
+          O resultado &eacute; modesto &mdash; e isso &eacute; honesto, n&atilde;o um erro.
+        </p>
+        <p style="font:400 21px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
+          O desempenho se mant&eacute;m est&aacute;vel entre a valida&ccedil;&atilde;o cruzada e o teste no ano
+          mais recente &mdash; sinal de que n&atilde;o h&aacute; sorte nem "decoreba" envolvida.
+        </p>
+        <p style="font:400 21px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
+          O teto atual reflete a base de dados dispon&iacute;vel hoje (poucos anos de hist&oacute;rico, sem
+          renda ou infraestrutura escolar) &mdash; n&atilde;o um limite do m&eacute;todo.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0F2038; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#B9C4D0;">
+    <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
+    <span>05 / 11</span>
+  </div>
+</div>
+</div>
+
+<!-- ===================== SLIDE 6 ===================== -->
+<div class="slide" data-i="6">
+<div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#FAF6EF; font-family:'Public Sans', system-ui, sans-serif; color:#17222E;">
+  <div style="padding:96px 140px 0 160px;">
+    <div style="font:600 18px/1 'Public Sans'; letter-spacing:0.16em; text-transform:uppercase; color:#9C6B1F;">
+      Bloco 3 &middot; Principal Insight #1
+    </div>
+    <h1 style="font:700 52px/1.2 'Source Serif 4'; color:#0F2038; margin:24px 0 0; max-width:1400px;">
+      O que mais explica a alfabetiza&ccedil;&atilde;o de um munic&iacute;pio
+    </h1>
+  </div>
+  <div style="display:flex; gap:72px; padding:64px 140px 0 160px;">
+    <div style="flex:1.3; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:48px;">
+      <div style="font:600 16px/1 'Public Sans'; letter-spacing:0.1em; text-transform:uppercase; color:#55606B; margin-bottom:32px;">
+        Import&acirc;ncia relativa de cada fator no modelo campe&atilde;o
+      </div>
+      <div style="display:flex; flex-direction:column; gap:26px;">
+        <div style="display:flex; align-items:center; gap:24px;">
+          <div style="width:440px; font:600 18px 'Public Sans'; color:#0F2038;">Desempenho do munic&iacute;pio no ano anterior</div>
+          <div style="flex:1; height:34px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:100%; background:#C08A34; border-radius:4px;"></div></div>
+          <div style="width:64px; text-align:right; font:700 20px 'Source Serif 4';">13,6%</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:24px;">
+          <div style="width:440px; font:500 18px 'Public Sans'; color:#0F2038;">Tend&ecirc;ncia recente (melhorando ou piorando)</div>
+          <div style="flex:1; height:34px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:86%; background:#1D3F63; border-radius:4px;"></div></div>
+          <div style="width:64px; text-align:right; font:600 20px 'Source Serif 4';">11,7%</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:24px;">
+          <div style="width:440px; font:500 18px 'Public Sans'; color:#0F2038;">Porte da rede municipal avaliada</div>
+          <div style="flex:1; height:34px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:77%; background:#1D3F63; border-radius:4px;"></div></div>
+          <div style="width:64px; text-align:right; font:600 20px 'Source Serif 4';">10,5%</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:24px;">
+          <div style="width:440px; font:500 18px 'Public Sans'; color:#0F2038;">Meta estadual vigente</div>
+          <div style="flex:1; height:34px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:74%; background:#1D3F63; border-radius:4px;"></div></div>
+          <div style="width:64px; text-align:right; font:600 20px 'Source Serif 4';">10,1%</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:24px;">
+          <div style="width:440px; font:500 18px 'Public Sans'; color:#0F2038;">Dist&acirc;ncia da meta no ano anterior</div>
+          <div style="flex:1; height:34px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:59%; background:#1D3F63; border-radius:4px;"></div></div>
+          <div style="width:64px; text-align:right; font:600 20px 'Source Serif 4';">8,0%</div>
+        </div>
+      </div>
+    </div>
+    <div style="flex:1; padding-top:16px;">
+      <div style="border-left:4px solid #C08A34; padding-left:32px;">
+        <p style="font:600 28px/1.45 'Source Serif 4'; color:#0F2038; margin:0;">
+          Continuidade de pol&iacute;tica municipal &eacute; o sinal mais forte que temos hoje.
+        </p>
+        <p style="font:400 21px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
+          Munic&iacute;pios que j&aacute; vinham melhorando tendem a continuar melhorando &mdash; e o inverso
+          tamb&eacute;m &eacute; verdade.
+        </p>
+        <p style="font:400 21px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
+          Metas estaduais e nacionais bem comunicadas aparecem logo em seguida, refor&ccedil;ando o valor de
+          manter metas ambiciosas e vis&iacute;veis.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0F2038; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#B9C4D0;">
+    <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
+    <span>06 / 11</span>
+  </div>
+</div>
+</div>
+
+<!-- ===================== SLIDE 7 ===================== -->
+<div class="slide" data-i="7">
+<div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#FAF6EF; font-family:'Public Sans', system-ui, sans-serif; color:#17222E;">
+  <div style="padding:96px 140px 0 160px;">
+    <div style="font:600 18px/1 'Public Sans'; letter-spacing:0.16em; text-transform:uppercase; color:#9C6B1F;">
+      Bloco 3 &middot; Principal Insight #2
+    </div>
+    <h1 style="font:700 48px/1.25 'Source Serif 4'; color:#0F2038; margin:24px 0 0; max-width:1500px;">
+      O modelo enxerga diferen&ccedil;as regionais reais &mdash; mas ainda n&atilde;o podemos dizer qual
+      regi&atilde;o est&aacute; pior de verdade
+    </h1>
+  </div>
+  <div style="display:flex; gap:72px; padding:56px 140px 0 160px; align-items:flex-start;">
+    <div style="flex:1.2; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:44px 48px;">
+      <div style="font:600 16px/1 'Public Sans'; letter-spacing:0.1em; text-transform:uppercase; color:#55606B; margin-bottom:8px;">
+        Taxa de alfabetiza&ccedil;&atilde;o m&eacute;dia por regi&atilde;o (2021&ndash;2023)
+      </div>
+      <div style="font:400 15px 'Public Sans'; color:#8A93A0; margin-bottom:28px;">
+        Amostra sint&eacute;tica de demonstra&ccedil;&atilde;o &mdash; ver nota ao lado
+      </div>
+      <div style="display:flex; align-items:flex-end; gap:36px; height:280px;">
+        <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; flex:1;">
+          <div style="font:700 22px 'Source Serif 4'; color:#0F2038; margin-bottom:8px;">57,1%</div>
+          <div style="width:100%; height:180px; background:#9BB4CC; border-radius:3px 3px 0 0;"></div>
+          <div style="font:500 17px 'Public Sans'; color:#55606B; margin-top:12px;">Norte</div>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; flex:1;">
+          <div style="font:700 22px 'Source Serif 4'; color:#0F2038; margin-bottom:8px;">56,4%</div>
+          <div style="width:100%; height:177px; background:#9BB4CC; border-radius:3px 3px 0 0;"></div>
+          <div style="font:500 17px 'Public Sans'; color:#55606B; margin-top:12px;">Nordeste</div>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; flex:1;">
+          <div style="font:700 22px 'Source Serif 4'; color:#0F2038; margin-bottom:8px;">55,5%</div>
+          <div style="width:100%; height:174px; background:#9BB4CC; border-radius:3px 3px 0 0;"></div>
+          <div style="font:500 17px 'Public Sans'; color:#55606B; margin-top:12px;">Centro-Oeste</div>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; flex:1;">
+          <div style="font:700 22px 'Source Serif 4'; color:#0F2038; margin-bottom:8px;">52,8%</div>
+          <div style="width:100%; height:166px; background:#9BB4CC; border-radius:3px 3px 0 0;"></div>
+          <div style="font:500 17px 'Public Sans'; color:#55606B; margin-top:12px;">Sul</div>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; flex:1;">
+          <div style="font:700 24px 'Source Serif 4'; color:#A85338; margin-bottom:8px;">37,2%</div>
+          <div style="width:100%; height:118px; background:#A85338; border-radius:3px 3px 0 0;"></div>
+          <div style="font:600 17px 'Public Sans'; color:#0F2038; margin-top:12px;">Sudeste</div>
+        </div>
+      </div>
+    </div>
+    <div style="flex:1;">
+      <div style="background:#F0DCD3; border-radius:4px; padding:36px 40px;">
+        <div style="font:700 16px 'Public Sans'; letter-spacing:0.08em; text-transform:uppercase; color:#A85338; margin-bottom:14px;">
+          Nota de transpar&ecirc;ncia
+        </div>
+        <p style="font:500 21px/1.6 'Public Sans'; color:#5C2F20; margin:0;">
+          Esta base &eacute; uma <strong>amostra sint&eacute;tica</strong> constru&iacute;da para desenvolver o
+          pipeline. Esse padr&atilde;o regional n&atilde;o deve ser lido como retrato real do Brasil.
+        </p>
+      </div>
+      <p style="font:400 22px/1.6 'Public Sans'; color:#55606B; margin:28px 0 0;">
+        O que este gr&aacute;fico prova &eacute; outra coisa: <strong style="color:#0F2038;">o modelo capta e
+        quantifica diferen&ccedil;as regionais</strong>. Assim que plugarmos dados oficiais do INEP, a mesma
+        metodologia vai gerar o diagn&oacute;stico regional verdadeiro, regi&atilde;o a regi&atilde;o.
+      </p>
+    </div>
+  </div>
+  <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0F2038; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#B9C4D0;">
+    <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
+    <span>07 / 11</span>
+  </div>
+</div>
+</div>
+
+<!-- ===================== SLIDE 8 ===================== -->
+<div class="slide" data-i="8">
+<div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#FAF6EF; font-family:'Public Sans', system-ui, sans-serif; color:#17222E;">
+  <div style="padding:96px 140px 0 160px;">
+    <div style="font:600 18px/1 'Public Sans'; letter-spacing:0.16em; text-transform:uppercase; color:#9C6B1F;">
+      Bloco 4 &middot; Da Predi&ccedil;&atilde;o &agrave; A&ccedil;&atilde;o
+    </div>
+    <h1 style="font:700 52px/1.2 'Source Serif 4'; color:#0F2038; margin:24px 0 0; max-width:1400px;">
+      Um ranking de risco por munic&iacute;pio, atualiz&aacute;vel a cada ciclo
+    </h1>
+  </div>
+  <div style="display:flex; gap:72px; padding:64px 140px 0 160px;">
+    <div style="flex:1.3; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:44px 48px;">
+      <div style="font:600 16px/1 'Public Sans'; letter-spacing:0.1em; text-transform:uppercase; color:#55606B; margin-bottom:28px;">
+        Menor probabilidade estimada de alfabetiza&ccedil;&atilde;o &mdash; 2023
+      </div>
+      <div style="display:flex; align-items:center; gap:24px; padding:14px 0; border-bottom:1px solid #EFE7D6;">
+        <div style="width:280px; font:600 19px 'Public Sans'; color:#0F2038;">Munic&iacute;pio RJ &middot; 1</div>
+        <div style="flex:1; height:30px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:42%; background:#A85338; border-radius:4px;"></div></div>
+        <div style="width:72px; text-align:right; font:700 20px 'Source Serif 4'; color:#A85338;">42%</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:24px; padding:14px 0; border-bottom:1px solid #EFE7D6;">
+        <div style="width:280px; font:500 19px 'Public Sans'; color:#0F2038;">Munic&iacute;pio SP &middot; 1</div>
+        <div style="flex:1; height:30px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:45%; background:#A85338; border-radius:4px;"></div></div>
+        <div style="width:72px; text-align:right; font:600 20px 'Source Serif 4'; color:#0F2038;">45%</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:24px; padding:14px 0; border-bottom:1px solid #EFE7D6;">
+        <div style="width:280px; font:500 19px 'Public Sans'; color:#0F2038;">Munic&iacute;pio PE &middot; 1</div>
+        <div style="flex:1; height:30px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:46%; background:#A85338; border-radius:4px;"></div></div>
+        <div style="width:72px; text-align:right; font:600 20px 'Source Serif 4'; color:#0F2038;">46%</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:24px; padding:14px 0; border-bottom:1px solid #EFE7D6;">
+        <div style="width:280px; font:500 19px 'Public Sans'; color:#0F2038;">Munic&iacute;pio MG &middot; 3</div>
+        <div style="flex:1; height:30px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:47%; background:#A85338; border-radius:4px;"></div></div>
+        <div style="width:72px; text-align:right; font:600 20px 'Source Serif 4'; color:#0F2038;">47%</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:24px; padding:14px 0;">
+        <div style="width:280px; font:500 19px 'Public Sans'; color:#0F2038;">Munic&iacute;pio PE &middot; 2</div>
+        <div style="flex:1; height:30px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:47%; background:#A85338; border-radius:4px;"></div></div>
+        <div style="width:72px; text-align:right; font:600 20px 'Source Serif 4'; color:#0F2038;">47%</div>
+      </div>
+      <div style="margin-top:28px; padding-top:24px; border-top:1px solid #E7DFCE; font:400 17px/1.5 'Public Sans'; color:#8A93A0;">
+        Nenhum munic&iacute;pio ficou abaixo de 40% em termos absolutos &mdash; o valor est&aacute; em comparar
+        munic&iacute;pios entre si dentro do mesmo ano.
+      </div>
+    </div>
+    <div style="flex:1; padding-top:16px;">
+      <div style="border-left:4px solid #C08A34; padding-left:32px;">
+        <p style="font:600 28px/1.45 'Source Serif 4'; color:#0F2038; margin:0;">
+          Priorizar antes do resultado sair, n&atilde;o depois.
+        </p>
+        <p style="font:400 21px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
+          Com esse ranking, a secretaria pode direcionar visitas t&eacute;cnicas, refor&ccedil;o pedag&oacute;gico
+          e material did&aacute;tico para os munic&iacute;pios de maior risco relativo <strong style="color:#0F2038;">durante</strong>
+          o ciclo letivo.
+        </p>
+        <p style="font:400 21px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
+          O ranking &eacute; recalculado a cada novo ciclo de dados, acompanhando a evolu&ccedil;&atilde;o de cada
+          munic&iacute;pio.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0F2038; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#B9C4D0;">
+    <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
+    <span>08 / 11</span>
+  </div>
+</div>
+</div>
+
+<!-- ===================== SLIDE 9 ===================== -->
+<div class="slide" data-i="9">
+<div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#FAF6EF; font-family:'Public Sans', system-ui, sans-serif; color:#17222E;">
+  <div style="padding:88px 140px 0 160px;">
+    <div style="font:600 18px/1 'Public Sans'; letter-spacing:0.16em; text-transform:uppercase; color:#9C6B1F;">
+      Bloco 4 &middot; Da Predi&ccedil;&atilde;o &agrave; A&ccedil;&atilde;o
+    </div>
+    <h1 style="font:700 50px/1.2 'Source Serif 4'; color:#0F2038; margin:20px 0 0; max-width:1400px;">
+      Quatro perfis de munic&iacute;pio, quatro estrat&eacute;gias diferentes
+    </h1>
+    <p style="font:400 22px/1.55 'Public Sans'; color:#55606B; max-width:1200px; margin:20px 0 0;">
+      Agrupamento por padr&atilde;o hist&oacute;rico e dist&acirc;ncia da meta (81 munic&iacute;pios, K-Means).
+    </p>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:28px; padding:44px 140px 0 160px;">
+    <div style="display:flex; gap:28px;">
+      <div style="flex:1; border-radius:4px; padding:32px 36px; background:#FFFFFF; border:1px solid #E7DFCE; border-left:6px solid #1D3F63;">
+        <span style="display:inline-block; font:600 14px 'Public Sans'; letter-spacing:0.06em; text-transform:uppercase; padding:5px 12px; border-radius:3px; background:#DCE6F0; color:#1D3F63;">Refer&ecirc;ncia &middot; 21 munic&iacute;pios</span>
+        <h3 style="font:700 24px 'Source Serif 4'; color:#0F2038; margin:16px 0 8px;">Meta ambiciosa e superada</h3>
+        <p style="font:400 18px/1.5 'Public Sans'; color:#55606B; margin:0;">
+          Meta m&eacute;dia 55,2% &middot; desempenho hist&oacute;rico 62,1% &middot; +6,9 p.p. acima da meta.
+        </p>
+      </div>
+      <div style="flex:1; border-radius:4px; padding:32px 36px; background:#FFFFFF; border:1px solid #E7DFCE; border-left:6px solid #9BB4CC;">
+        <span style="display:inline-block; font:600 14px 'Public Sans'; letter-spacing:0.06em; text-transform:uppercase; padding:5px 12px; border-radius:3px; background:#EDF2F7; color:#3D5875;">Est&aacute;vel &middot; 20 munic&iacute;pios</span>
+        <h3 style="font:700 24px 'Source Serif 4'; color:#0F2038; margin:16px 0 8px;">Cumprindo meta modesta</h3>
+        <p style="font:400 18px/1.5 'Public Sans'; color:#55606B; margin:0;">
+          Meta m&eacute;dia 46,4% &middot; desempenho hist&oacute;rico 52,4% &middot; +6,0 p.p. acima da meta.
+        </p>
+      </div>
+    </div>
+    <div style="display:flex; gap:28px;">
+      <div style="flex:1; border-radius:4px; padding:32px 36px; background:#FFFFFF; border:1px solid #E7DFCE; border-left:6px solid #C08A34;">
+        <span style="display:inline-block; font:600 14px 'Public Sans'; letter-spacing:0.06em; text-transform:uppercase; padding:5px 12px; border-radius:3px; background:#F3E4CB; color:#8A5D1F;">Aten&ccedil;&atilde;o &middot; 18 munic&iacute;pios</span>
+        <h3 style="font:700 24px 'Source Serif 4'; color:#0F2038; margin:16px 0 8px;">Meta ambiciosa, resultado abaixo</h3>
+        <p style="font:400 18px/1.5 'Public Sans'; color:#55606B; margin:0;">
+          Meta m&eacute;dia 55,9% &middot; desempenho hist&oacute;rico 49,1% &middot; -6,8 p.p. abaixo da meta.
+        </p>
+      </div>
+      <div style="flex:1; border-radius:4px; padding:32px 36px; background:#FFFFFF; border:1px solid #E7DFCE; border-left:6px solid #A85338;">
+        <span style="display:inline-block; font:600 14px 'Public Sans'; letter-spacing:0.06em; text-transform:uppercase; padding:5px 12px; border-radius:3px; background:#F0DCD3; color:#A85338;">Priorit&aacute;rio &middot; 22 munic&iacute;pios</span>
+        <h3 style="font:700 24px 'Source Serif 4'; color:#0F2038; margin:16px 0 8px;">Abaixo at&eacute; de meta modesta</h3>
+        <p style="font:400 18px/1.5 'Public Sans'; color:#55606B; margin:0;">
+          Meta m&eacute;dia 47,3% &middot; desempenho hist&oacute;rico 39,2% &middot; -8,1 p.p. abaixo da meta.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div style="margin:36px 140px 0 160px; padding:0;">
+    <p style="font:600 24px/1.5 'Source Serif 4'; color:#0F2038; border-left:4px solid #C08A34; padding-left:32px; margin:0; max-width:1400px;">
+      Uma pol&iacute;tica &uacute;nica para 5.570 munic&iacute;pios n&atilde;o funciona &mdash; agrupar por
+      padr&atilde;o permite estrat&eacute;gias sob medida para cada grupo.
+    </p>
+  </div>
+  <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0F2038; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#B9C4D0;">
+    <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
+    <span>09 / 11</span>
+  </div>
+</div>
+</div>
+
+<!-- ===================== SLIDE 10 ===================== -->
+<div class="slide" data-i="10">
+<div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#FAF6EF; font-family:'Public Sans', system-ui, sans-serif; color:#17222E;">
+  <div style="padding:96px 140px 0 160px;">
+    <div style="font:600 18px/1 'Public Sans'; letter-spacing:0.16em; text-transform:uppercase; color:#9C6B1F;">
+      Bloco 5 &middot; Honestidade T&eacute;cnica
+    </div>
+    <h1 style="font:700 52px/1.2 'Source Serif 4'; color:#0F2038; margin:24px 0 0; max-width:1300px;">
+      O que este modelo ainda n&atilde;o sabe
+    </h1>
+  </div>
+  <div style="display:flex; gap:72px; padding:64px 140px 0 160px;">
+    <div style="flex:1.2;">
+      <div style="display:flex; gap:24px; align-items:flex-start; padding:22px 0; border-bottom:1px solid #E7DFCE;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" style="flex-shrink:0; margin-top:4px;">
+          <circle cx="12" cy="12" r="10" stroke="#A85338" stroke-width="2"/>
+          <path d="M12 7v6" stroke="#A85338" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="16.5" r="1.2" fill="#A85338"/>
+        </svg>
+        <div>
+          <div style="font:700 22px 'Public Sans'; color:#0F2038;">Base ainda &eacute; uma amostra sint&eacute;tica</div>
+          <div style="font:400 19px/1.5 'Public Sans'; color:#55606B; margin-top:6px;">N&atilde;o &eacute; o dado oficial do INEP/Censo Escolar &mdash; os n&uacute;meros absolutos n&atilde;o devem ser lidos como estat&iacute;stica real.</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:24px; align-items:flex-start; padding:22px 0; border-bottom:1px solid #E7DFCE;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" style="flex-shrink:0; margin-top:4px;">
+          <circle cx="12" cy="12" r="10" stroke="#A85338" stroke-width="2"/>
+          <path d="M12 7v6" stroke="#A85338" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="16.5" r="1.2" fill="#A85338"/>
+        </svg>
+        <div>
+          <div style="font:700 22px 'Public Sans'; color:#0F2038;">Pouco hist&oacute;rico por munic&iacute;pio</div>
+          <div style="font:400 19px/1.5 'Public Sans'; color:#55606B; margin-top:6px;">Apenas duas transi&ccedil;&otilde;es ano a ano (2021&rarr;2022&rarr;2023) para aprender tend&ecirc;ncias.</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:24px; align-items:flex-start; padding:22px 0; border-bottom:1px solid #E7DFCE;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" style="flex-shrink:0; margin-top:4px;">
+          <circle cx="12" cy="12" r="10" stroke="#A85338" stroke-width="2"/>
+          <path d="M12 7v6" stroke="#A85338" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="16.5" r="1.2" fill="#A85338"/>
+        </svg>
+        <div>
+          <div style="font:700 22px 'Public Sans'; color:#0F2038;">Faltam vari&aacute;veis socioecon&ocirc;micas</div>
+          <div style="font:400 19px/1.5 'Public Sans'; color:#55606B; margin-top:6px;">Renda, IDH, infraestrutura escolar e forma&ccedil;&atilde;o docente ainda n&atilde;o est&atilde;o na base.</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:24px; align-items:flex-start; padding:22px 0;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" style="flex-shrink:0; margin-top:4px;">
+          <circle cx="12" cy="12" r="10" stroke="#A85338" stroke-width="2"/>
+          <path d="M12 7v6" stroke="#A85338" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="16.5" r="1.2" fill="#A85338"/>
+        </svg>
+        <div>
+          <div style="font:700 22px 'Public Sans'; color:#0F2038;">Pol&iacute;tica nacional muda r&aacute;pido</div>
+          <div style="font:400 19px/1.5 'Public Sans'; color:#55606B; margin-top:6px;">O salto de 2021 para 2023 torna prever "o futuro" a partir s&oacute; do passado uma tarefa genuinamente dif&iacute;cil.</div>
+        </div>
+      </div>
+    </div>
+    <div style="flex:1; padding-top:16px;">
+      <div style="background:#0F2038; border-radius:4px; padding:44px 40px;">
+        <p style="font:600 30px/1.45 'Source Serif 4'; color:#FFFFFF; margin:0;">
+          Reconhecer os limites agora &eacute; o que evita decis&otilde;es erradas depois.
+        </p>
+        <p style="font:400 21px/1.6 'Public Sans'; color:#DCE6F0; margin:24px 0 0;">
+          Um modelo de pol&iacute;tica p&uacute;blica que esconde suas limita&ccedil;&otilde;es &eacute; mais
+          perigoso do que um modelo simples e honesto sobre o que ainda n&atilde;o sabe.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0F2038; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#B9C4D0;">
+    <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
+    <span>10 / 11</span>
+  </div>
+</div>
+</div>
+
+<!-- ===================== SLIDE 11 ===================== -->
+<div class="slide" data-i="11">
+<div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#0F2038; font-family:'Public Sans', system-ui, sans-serif; color:#F3E4CB;">
+  <div style="position:absolute; top:-260px; left:-200px; width:820px; height:820px; border-radius:50%; background:radial-gradient(circle at 60% 60%, #1D3F63 0%, #0F2038 70%); opacity:0.9;"></div>
+  <div style="position:absolute; left:0; top:0; bottom:0; width:14px; background:#C08A34;"></div>
+  <div style="position:relative; padding:104px 140px 0 160px;">
+    <div style="font:600 20px/1 'Public Sans'; letter-spacing:0.18em; text-transform:uppercase; color:#C08A34;">
+      Bloco 6 &middot; Encerramento
+    </div>
+    <h1 style="font:700 62px/1.2 'Source Serif 4'; color:#FFFFFF; margin:28px 0 0; max-width:1200px;">
+      Da amostra sint&eacute;tica ao piloto real
+    </h1>
+    <div style="display:flex; gap:48px; margin-top:64px;">
+      <div style="flex:1; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); border-radius:4px; padding:32px 30px;">
+        <div style="font:700 26px 'Source Serif 4'; color:#C08A34;">1</div>
+        <div style="font:700 21px/1.35 'Public Sans'; color:#FFFFFF; margin-top:14px;">Plugar dados oficiais</div>
+        <div style="font:400 18px/1.5 'Public Sans'; color:#B9C4D0; margin-top:10px;">INEP, Censo Escolar, PNAD, FUNDEB e IBGE, mantendo o mesmo pipeline.</div>
+      </div>
+      <div style="flex:1; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); border-radius:4px; padding:32px 30px;">
+        <div style="font:700 26px 'Source Serif 4'; color:#C08A34;">2</div>
+        <div style="font:700 21px/1.35 'Public Sans'; color:#FFFFFF; margin-top:14px;">Validar em campo</div>
+        <div style="font:400 18px/1.5 'Public Sans'; color:#B9C4D0; margin-top:10px;">Radar de risco testado com dados reais em 1&ndash;2 estados-piloto.</div>
+      </div>
+      <div style="flex:1; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); border-radius:4px; padding:32px 30px;">
+        <div style="font:700 26px 'Source Serif 4'; color:#C08A34;">3</div>
+        <div style="font:700 21px/1.35 'Public Sans'; color:#FFFFFF; margin-top:14px;">Retreinar a cada ciclo</div>
+        <div style="font:400 18px/1.5 'Public Sans'; color:#B9C4D0; margin-top:10px;">Pol&iacute;tica nacional muda r&aacute;pido &mdash; o modelo precisa acompanhar.</div>
+      </div>
+    </div>
+    <p style="font:600 30px/1.5 'Source Serif 4'; color:#FFFFFF; margin:72px 0 0; max-width:1100px;">
+      Obrigado. Ficamos &agrave; disposi&ccedil;&atilde;o para aprofundar qualquer um desses pontos.
+    </p>
+  </div>
+  <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0A1729; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#8EA0B4;">
+    <span>[link do reposit&oacute;rio] &middot; [contato da equipe]</span>
+    <span>11 / 11</span>
+  </div>
+</div>
+</div>
+
+</div><!-- #stage -->
+
+<div class="clickzone" id="zone-prev" title="Slide anterior"></div>
+<div class="clickzone" id="zone-next" title="Pr&oacute;ximo slide"></div>
+
+<button id="fs-btn" class="nav-btn" title="Tela cheia (F)">&#x26F6;</button>
+
+<div id="hud">
+  <button class="nav-btn" id="prev-btn" title="Anterior (&larr;)">&#8592;</button>
+  <div id="counter">1 / 11</div>
+  <button class="nav-btn" id="next-btn" title="Pr&oacute;ximo (&rarr;)">&#8594;</button>
+</div>
+
+<script>
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var total = slides.length;
+  var current = 0;
+
+  var stage = document.getElementById('stage');
+  var counter = document.getElementById('counter');
+  var prevBtn = document.getElementById('prev-btn');
+  var nextBtn = document.getElementById('next-btn');
+  var fsBtn = document.getElementById('fs-btn');
+
+  function layout() {
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    slides.forEach(function (s) {
+      s.style.transform = 'translate(-50%, -50%) scale(' + scale + ')';
+    });
+  }
+
+  function render() {
+    slides.forEach(function (s, i) {
+      s.classList.toggle('active', i === current);
+    });
+    counter.textContent = (current + 1) + ' / ' + total;
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === total - 1;
+  }
+
+  function go(delta) {
+    var next = current + delta;
+    if (next < 0 || next >= total) return;
+    current = next;
+    location.hash = String(current + 1);
+    render();
+  }
+
+  function goToHash() {
+    var n = parseInt(location.hash.replace('#', ''), 10);
+    if (!isNaN(n) && n >= 1 && n <= total) {
+      current = n - 1;
+      render();
+    }
+  }
+  window.addEventListener('hashchange', goToHash);
+
+  prevBtn.addEventListener('click', function () { go(-1); });
+  nextBtn.addEventListener('click', function () { go(1); });
+  document.getElementById('zone-prev').addEventListener('click', function () { go(-1); });
+  document.getElementById('zone-next').addEventListener('click', function () { go(1); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { go(1); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { go(-1); e.preventDefault(); }
+    else if (e.key === 'Home') { current = 0; render(); }
+    else if (e.key === 'End') { current = total - 1; render(); }
+    else if (e.key === 'f' || e.key === 'F') { toggleFullscreen(); }
+  });
+
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(function () {});
+    } else {
+      document.exitFullscreen();
+    }
+  }
+  fsBtn.addEventListener('click', toggleFullscreen);
+
+  window.addEventListener('resize', layout);
+  layout();
+  goToHash();
+  render();
+})();
+</script>
+
+</body>
+</html>
