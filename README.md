@@ -217,18 +217,30 @@ prevalência da classe positiva no teste (73,3%), mostra que os modelos capturam
 
 Usando `Feature Importance` (MDI) e `SHAP TreeExplainer` sobre o modelo campeão (Random Forest):
 
-- **`pct_alfabetizados_lag1`** (taxa de alfabetização do município no ano anterior) é, disparadamente, o
-  atributo mais influente — municípios com trajetória histórica forte tendem a continuar alfabetizando
-  bem (efeito de persistência institucional).
-- **`delta_pct_alfabetizados_lag1`** (variação ano a ano) reforça esse efeito: municípios em trajetória de
-  melhora recente pesam positivamente na predição.
-- **`n_avaliados_lag1`** (proxy do porte/volume de alunos avaliados no município) também aparece entre os
-  atributos mais relevantes, sugerindo que o tamanho da rede municipal correlaciona com a capacidade de
-  execução da política de alfabetização.
-- **`meta_pct_uf`** e **`meta_pct_brasil`** (metas vigentes) capturam o efeito de tendência nacional
-  (metas crescentes ano a ano, refletindo o avanço do Compromisso Nacional Criança Alfabetizada).
-- **`regiao`** (dummies, especialmente Sudeste/Nordeste/Norte) confirma a desigualdade regional observada
-  na EDA.
+Os 5 atributos de maior importância (MDI), em ordem exata:
+
+| Ranking | Atributo | Importância |
+|---|---|---|
+| 1º | `pct_alfabetizados_lag1` — taxa de alfabetização do município no ano anterior | 13,6% |
+| 2º | `delta_pct_alfabetizados_lag1` — variação da taxa em relação ao ano anterior | 11,7% |
+| 3º | `n_avaliados_lag1` — proxy do porte/volume de alunos avaliados no município | 10,5% |
+| 4º | `meta_pct_uf` — meta estadual vigente no ano | 10,1% |
+| 5º | `gap_meta_pct_municipio_lag1` — distância do município em relação à sua meta no ano anterior | 8,0% |
+
+- **`pct_alfabetizados_lag1`** é, disparadamente, o atributo mais influente — municípios com trajetória
+  histórica forte tendem a continuar alfabetizando bem (efeito de persistência institucional).
+- **`delta_pct_alfabetizados_lag1`** reforça esse efeito: municípios em trajetória de melhora recente pesam
+  positivamente na predição.
+- **`n_avaliados_lag1`** sugere que o porte da rede municipal correlaciona com a capacidade de execução da
+  política de alfabetização.
+- **`meta_pct_uf`** e **`gap_meta_pct_municipio_lag1`** capturam, respectivamente, o efeito da meta estadual
+  vigente e o quão perto (ou longe) o município já estava de cumpri-la.
+- As dummies de **`regiao`**/`sigla_uf` aparecem com importância individual menor (ex.: `regiao_Sudeste`
+  em torno de 4%) — relevantes o suficiente para confirmar heterogeneidade regional nos dados, mas
+  individualmente menos determinantes que o histórico do próprio município. Como discutido na
+  [Seção 3.4 do notebook](notebooks/01_pipeline_predicao_alfabetizacao.ipynb) (hipótese H4, refutada pelos
+  dados), o sentido dessa heterogeneidade **nesta amostra sintética não deve ser generalizado** como
+  retrato real da desigualdade educacional brasileira.
 
 **Resposta à pergunta de negócio "quais fatores mais impactam a alfabetização?"**: nesta base, o
 desempenho histórico recente do próprio município e a cobertura das metas nacionais/estaduais são os
