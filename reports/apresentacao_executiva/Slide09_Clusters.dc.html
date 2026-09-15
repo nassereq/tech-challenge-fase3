@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Public+Sans:wght@400;500;600;700&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    a { color: #9C6B1F; }
+    a:hover { color: #7A5417; }
+    .cell { flex:1; border-radius:4px; padding:32px 36px; }
+    .badge { display:inline-block; font:600 14px 'Public Sans'; letter-spacing:0.06em; text-transform:uppercase; padding:5px 12px; border-radius:3px; }
+  </style>
+</helmet>
+<div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#FAF6EF; font-family:'Public Sans', system-ui, sans-serif; color:#17222E;">
+
+  <div style="padding:88px 140px 0 160px;">
+    <div style="font:600 18px/1 'Public Sans'; letter-spacing:0.16em; text-transform:uppercase; color:#9C6B1F;">
+      Bloco 4 &middot; Da Predi&ccedil;&atilde;o &agrave; A&ccedil;&atilde;o
+    </div>
+    <h1 style="font:700 50px/1.2 'Source Serif 4'; color:#0F2038; margin:20px 0 0; max-width:1400px;">
+      Quatro perfis de munic&iacute;pio, quatro estrat&eacute;gias diferentes
+    </h1>
+    <p style="font:400 22px/1.55 'Public Sans'; color:#55606B; max-width:1200px; margin:20px 0 0;">
+      Agrupamento por padr&atilde;o hist&oacute;rico e dist&acirc;ncia da meta (81 munic&iacute;pios, K-Means).
+    </p>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:28px; padding:44px 140px 0 160px;">
+
+    <div style="display:flex; gap:28px;">
+      <div class="cell" style="background:#FFFFFF; border:1px solid #E7DFCE; border-left:6px solid #1D3F63;">
+        <span class="badge" style="background:#DCE6F0; color:#1D3F63;">Refer&ecirc;ncia &middot; 21 munic&iacute;pios</span>
+        <h3 style="font:700 24px 'Source Serif 4'; color:#0F2038; margin:16px 0 8px;">Meta ambiciosa e superada</h3>
+        <p style="font:400 18px/1.5 'Public Sans'; color:#55606B; margin:0;">
+          Meta m&eacute;dia 55,2% &middot; desempenho hist&oacute;rico 62,1% &middot; +6,9 p.p. acima da meta.
+        </p>
+      </div>
+      <div class="cell" style="background:#FFFFFF; border:1px solid #E7DFCE; border-left:6px solid #9BB4CC;">
+        <span class="badge" style="background:#EDF2F7; color:#3D5875;">Est&aacute;vel &middot; 20 munic&iacute;pios</span>
+        <h3 style="font:700 24px 'Source Serif 4'; color:#0F2038; margin:16px 0 8px;">Cumprindo meta modesta</h3>
+        <p style="font:400 18px/1.5 'Public Sans'; color:#55606B; margin:0;">
+          Meta m&eacute;dia 46,4% &middot; desempenho hist&oacute;rico 52,4% &middot; +6,0 p.p. acima da meta.
+        </p>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:28px;">
+      <div class="cell" style="background:#FFFFFF; border:1px solid #E7DFCE; border-left:6px solid #C08A34;">
+        <span class="badge" style="background:#F3E4CB; color:#8A5D1F;">Aten&ccedil;&atilde;o &middot; 18 munic&iacute;pios</span>
+        <h3 style="font:700 24px 'Source Serif 4'; color:#0F2038; margin:16px 0 8px;">Meta ambiciosa, resultado abaixo</h3>
+        <p style="font:400 18px/1.5 'Public Sans'; color:#55606B; margin:0;">
+          Meta m&eacute;dia 55,9% &middot; desempenho hist&oacute;rico 49,1% &middot; -6,8 p.p. abaixo da meta.
+        </p>
+      </div>
+      <div class="cell" style="background:#FFFFFF; border:1px solid #E7DFCE; border-left:6px solid #A85338;">
+        <span class="badge" style="background:#F0DCD3; color:#A85338;">Priorit&aacute;rio &middot; 22 munic&iacute;pios</span>
+        <h3 style="font:700 24px 'Source Serif 4'; color:#0F2038; margin:16px 0 8px;">Abaixo at&eacute; de meta modesta</h3>
+        <p style="font:400 18px/1.5 'Public Sans'; color:#55606B; margin:0;">
+          Meta m&eacute;dia 47,3% &middot; desempenho hist&oacute;rico 39,2% &middot; -8,1 p.p. abaixo da meta.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin:36px 140px 0 160px; padding:0;">
+    <p style="font:600 24px/1.5 'Source Serif 4'; color:#0F2038; border-left:4px solid #C08A34; padding-left:32px; margin:0; max-width:1400px;">
+      Uma pol&iacute;tica &uacute;nica para 5.570 munic&iacute;pios n&atilde;o funciona &mdash; agrupar por
+      padr&atilde;o permite estrat&eacute;gias sob medida para cada grupo.
+    </p>
+  </div>
+
+  <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0F2038; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#B9C4D0;">
+    <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
+    <span>09 / 11</span>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

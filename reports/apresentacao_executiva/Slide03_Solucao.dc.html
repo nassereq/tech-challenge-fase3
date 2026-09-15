@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Public+Sans:wght@400;500;600;700&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    a { color: #9C6B1F; }
+    a:hover { color: #7A5417; }
+    .step-num { font:700 22px 'Source Serif 4'; color:#FFFFFF; width:48px; height:48px; border-radius:50%; background:#1D3F63; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .arrow { flex-shrink:0; }
+  </style>
+</helmet>
+<div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#FAF6EF; font-family:'Public Sans', system-ui, sans-serif; color:#17222E;">
+
+  <div style="padding:96px 140px 0 160px;">
+    <div style="font:600 18px/1 'Public Sans'; letter-spacing:0.16em; text-transform:uppercase; color:#9C6B1F;">
+      Bloco 2 &middot; O Que Constru&iacute;mos
+    </div>
+    <h1 style="font:700 52px/1.22 'Source Serif 4'; color:#0F2038; margin:24px 0 0; max-width:1400px;">
+      Um modelo que aprende com o hist&oacute;rico de cada munic&iacute;pio para estimar o risco antes do
+      resultado sair
+    </h1>
+  </div>
+
+  <div style="display:flex; align-items:stretch; gap:0; padding:96px 140px 0 160px;">
+
+    <div style="flex:1; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:36px 32px; display:flex; flex-direction:column; gap:18px;">
+      <div class="step-num">1</div>
+      <div style="font:700 24px/1.3 'Source Serif 4'; color:#0F2038; margin-top:8px;">Dados Gold</div>
+      <div style="font:400 18px/1.55 'Public Sans'; color:#55606B;">
+        Indicadores de alfabetiza&ccedil;&atilde;o, metas municipais/estaduais/nacionais e territ&oacute;rio,
+        constru&iacute;dos na Fase 2.
+      </div>
+    </div>
+
+    <svg class="arrow" width="64" height="220" viewBox="0 0 64 220" style="align-self:center;">
+      <line x1="4" y1="110" x2="52" y2="110" stroke="#C08A34" stroke-width="3"/>
+      <path d="M40 96 L58 110 L40 124" fill="none" stroke="#C08A34" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <div style="flex:1; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:36px 32px; display:flex; flex-direction:column; gap:18px;">
+      <div class="step-num">2</div>
+      <div style="font:700 24px/1.3 'Source Serif 4'; color:#0F2038; margin-top:8px;">Engenharia de atributos</div>
+      <div style="font:400 18px/1.55 'Public Sans'; color:#55606B;">
+        Hist&oacute;rico municipal do ano anterior, metas vigentes e regi&atilde;o &mdash; sem usar nada que
+        vaze o pr&oacute;prio resultado.
+      </div>
+    </div>
+
+    <svg class="arrow" width="64" height="220" viewBox="0 0 64 220" style="align-self:center;">
+      <line x1="4" y1="110" x2="52" y2="110" stroke="#C08A34" stroke-width="3"/>
+      <path d="M40 96 L58 110 L40 124" fill="none" stroke="#C08A34" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <div style="flex:1; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:36px 32px; display:flex; flex-direction:column; gap:18px;">
+      <div class="step-num">3</div>
+      <div style="font:700 24px/1.3 'Source Serif 4'; color:#0F2038; margin-top:8px;">3 modelos comparados</div>
+      <div style="font:400 18px/1.55 'Public Sans'; color:#55606B;">
+        Regress&atilde;o Log&iacute;stica, Random Forest e XGBoost, testados lado a lado com o mesmo crit&eacute;rio.
+      </div>
+    </div>
+
+    <svg class="arrow" width="64" height="220" viewBox="0 0 64 220" style="align-self:center;">
+      <line x1="4" y1="110" x2="52" y2="110" stroke="#C08A34" stroke-width="3"/>
+      <path d="M40 96 L58 110 L40 124" fill="none" stroke="#C08A34" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <div style="flex:1; background:#0F2038; border-radius:4px; padding:36px 32px; display:flex; flex-direction:column; gap:18px;">
+      <div class="step-num" style="background:#C08A34;">4</div>
+      <div style="font:700 24px/1.3 'Source Serif 4'; color:#FFFFFF; margin-top:8px;">Modelo campe&atilde;o</div>
+      <div style="font:400 18px/1.55 'Public Sans'; color:#DCE6F0;">
+        Random Forest, validado com valida&ccedil;&atilde;o cruzada e testado prevendo um ano que ele nunca viu (2023).
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:64px 140px 0 160px; max-width:1300px;">
+    <p style="font:400 22px/1.6 'Public Sans'; color:#55606B; border-left:4px solid #C08A34; padding-left:32px; margin:0;">
+      Pr&eacute;-processamento e modelo vivem em um <strong style="color:#0F2038;">pipeline &uacute;nico e reprodut&iacute;vel</strong>
+      &mdash; nenhuma decis&atilde;o &eacute; manual ou espec&iacute;fica de uma planilha.
+    </p>
+  </div>
+
+  <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0F2038; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#B9C4D0;">
+    <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
+    <span>03 / 11</span>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

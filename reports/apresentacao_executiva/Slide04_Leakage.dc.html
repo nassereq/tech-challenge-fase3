@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Public+Sans:wght@400;500;600;700&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    a { color: #9C6B1F; }
+    a:hover { color: #7A5417; }
+  </style>
+</helmet>
+<div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#FAF6EF; font-family:'Public Sans', system-ui, sans-serif; color:#17222E;">
+
+  <div style="padding:96px 140px 0 160px;">
+    <div style="font:600 18px/1 'Public Sans'; letter-spacing:0.16em; text-transform:uppercase; color:#9C6B1F;">
+      Bloco 2 &middot; Rigor T&eacute;cnico
+    </div>
+    <h1 style="font:700 52px/1.2 'Source Serif 4'; color:#0F2038; margin:24px 0 0; max-width:1400px;">
+      Encontramos e corrigimos dois vazamentos de informa&ccedil;&atilde;o antes de confiar no modelo
+    </h1>
+    <p style="font:400 24px/1.55 'Public Sans'; color:#55606B; max-width:1200px; margin:24px 0 0;">
+      Vazamento acontece quando o modelo, sem querer, tem acesso a informa&ccedil;&atilde;o que s&oacute;
+      existiria <em>depois</em> do resultado &mdash; e passa a "colar" em vez de prever de verdade.
+    </p>
+  </div>
+
+  <div style="display:flex; gap:56px; padding:64px 140px 0 160px;">
+
+    <div style="flex:1; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:44px 40px;">
+      <div style="display:inline-block; font:600 15px 'Public Sans'; letter-spacing:0.08em; text-transform:uppercase; color:#A85338; background:#F0DCD3; padding:6px 14px; border-radius:3px;">
+        Vazamento 1
+      </div>
+      <h2 style="font:700 30px/1.35 'Source Serif 4'; color:#0F2038; margin:24px 0 0;">
+        A nota j&aacute; continha a resposta
+      </h2>
+      <p style="font:400 21px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
+        A profici&ecirc;ncia do aluno na avalia&ccedil;&atilde;o definia matematicamente se ele seria
+        classificado como alfabetizado &mdash; usar essa nota seria prever o passado, n&atilde;o o futuro.
+      </p>
+      <div style="margin-top:28px; padding-top:24px; border-top:1px solid #E7DFCE; font:600 19px 'Public Sans'; color:#0F2038;">
+        Corre&ccedil;&atilde;o: removida do conjunto de vari&aacute;veis do modelo.
+      </div>
+    </div>
+
+    <div style="flex:1; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:44px 40px;">
+      <div style="display:inline-block; font:600 15px 'Public Sans'; letter-spacing:0.08em; text-transform:uppercase; color:#A85338; background:#F0DCD3; padding:6px 14px; border-radius:3px;">
+        Vazamento 2
+      </div>
+      <h2 style="font:700 30px/1.35 'Source Serif 4'; color:#0F2038; margin:24px 0 0;">
+        O indicador do munic&iacute;pio "sabia" o pr&oacute;prio resultado
+      </h2>
+      <p style="font:400 21px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
+        O percentual de alfabetiza&ccedil;&atilde;o do munic&iacute;pio no ano corrente j&aacute; inclu&iacute;a
+        o resultado do pr&oacute;prio aluno sendo avaliado pelo modelo.
+      </p>
+      <div style="margin-top:28px; padding-top:24px; border-top:1px solid #E7DFCE; font:600 19px 'Public Sans'; color:#0F2038;">
+        Corre&ccedil;&atilde;o: modelo usa apenas o hist&oacute;rico do ano anterior.
+      </div>
+    </div>
+  </div>
+
+  <div style="margin:64px 140px 0 160px; background:#0F2038; border-radius:4px; padding:32px 48px; display:flex; align-items:center; gap:24px;">
+    <div style="width:6px; height:56px; background:#C08A34; flex-shrink:0;"></div>
+    <p style="font:600 24px/1.5 'Source Serif 4'; color:#FFFFFF; margin:0;">
+      Sem essa corre&ccedil;&atilde;o, o modelo pareceria quase perfeito &mdash; e seria in&uacute;til na
+      pr&aacute;tica.
+    </p>
+  </div>
+
+  <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0F2038; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#B9C4D0;">
+    <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
+    <span>04 / 11</span>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>
