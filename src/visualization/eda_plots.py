@@ -15,15 +15,15 @@ def plot_target_distribution(df: pd.DataFrame, target: str, output_path: str) ->
     df[target].value_counts().sort_index().plot(
         kind="bar", ax=axes[0], color=["#d62728", "#2ca02c"]
     )
-    axes[0].set_xticklabels(["Nao alfabetizado", "Alfabetizado"], rotation=0)
-    axes[0].set_title("Distribuicao geral do alvo")
-    axes[0].set_ylabel("N. de alunos")
+    axes[0].set_xticklabels(["Nao atingiu a meta", "Atingiu a meta"], rotation=0)
+    axes[0].set_title("Distribuicao geral do alvo (municipios, 2024)")
+    axes[0].set_ylabel("N. de municipios")
 
-    taxa_ano = df.groupby("ano")[target].mean()
-    taxa_ano.plot(kind="bar", ax=axes[1], color="#1f77b4")
-    axes[1].set_title("Taxa de alfabetizacao por ano")
-    axes[1].set_ylabel("% alfabetizados")
-    axes[1].set_xticklabels(taxa_ano.index, rotation=0)
+    taxa_regiao = df.groupby("regiao")[target].mean().sort_values(ascending=False)
+    taxa_regiao.plot(kind="bar", ax=axes[1], color="#1f77b4")
+    axes[1].set_title("Taxa de municipios que atingiram a meta, por regiao")
+    axes[1].set_ylabel("% que atingiu a meta")
+    axes[1].set_xticklabels(taxa_regiao.index, rotation=20)
     fig.tight_layout()
     fig.savefig(output_path, dpi=150)
     plt.close(fig)

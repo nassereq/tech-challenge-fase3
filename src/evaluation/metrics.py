@@ -21,7 +21,7 @@ from sklearn.metrics import (
 
 def evaluate_model(name: str, estimator, X_test, y_test) -> dict:
     """Calcula o conjunto completo de metricas de avaliacao para um modelo
-    ja treinado, no conjunto de teste (holdout temporal)."""
+    ja treinado, no conjunto de teste (holdout estratificado)."""
     y_pred = estimator.predict(X_test)
     y_proba = estimator.predict_proba(X_test)[:, 1]
 
@@ -60,7 +60,7 @@ def plot_roc_pr_curves(estimators: dict, X_test, y_test, output_path_prefix: str
     for name, estimator in estimators.items():
         RocCurveDisplay.from_estimator(estimator, X_test, y_test, name=name, ax=ax)
     ax.plot([0, 1], [0, 1], linestyle="--", color="gray", label="Aleatorio")
-    ax.set_title("Curvas ROC -- comparacao de modelos (teste 2023)")
+    ax.set_title("Curvas ROC -- comparacao de modelos (holdout, 20% dos municipios)")
     ax.legend(loc="lower right", fontsize=8)
     fig.tight_layout()
     fig.savefig(f"{output_path_prefix}_roc.png", dpi=150)
@@ -69,7 +69,7 @@ def plot_roc_pr_curves(estimators: dict, X_test, y_test, output_path_prefix: str
     fig, ax = plt.subplots(figsize=(6, 5))
     for name, estimator in estimators.items():
         PrecisionRecallDisplay.from_estimator(estimator, X_test, y_test, name=name, ax=ax)
-    ax.set_title("Curvas Precisao-Recall -- comparacao de modelos (teste 2023)")
+    ax.set_title("Curvas Precisao-Recall -- comparacao de modelos (holdout, 20% dos municipios)")
     ax.legend(loc="lower left", fontsize=8)
     fig.tight_layout()
     fig.savefig(f"{output_path_prefix}_pr.png", dpi=150)

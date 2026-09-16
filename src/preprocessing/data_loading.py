@@ -1,18 +1,45 @@
-"""Carregamento e engenharia de atributos da base Gold (Fase 2) para o
-problema de classificacao binaria "aluno alfabetizado x nao alfabetizado".
+"""Carregamento e engenharia de atributos da base Gold real (Fase 2) para o
+problema de classificacao binaria "municipio atingiu a meta de alfabetizacao
+x nao atingiu".
 
-Regra de negocio identificada na base: `alfabetizado` e definido de forma
-deterministica como `proficiencia_saeb >= ponto_corte` (743 pontos). Por isso
-`proficiencia_saeb` e `ponto_corte` sao removidos do conjunto de atributos:
-usa-los seria vazamento direto do alvo (a variavel e literalmente o rotulo
-disfarcado), nao um preditor de negocio.
+## Historico desta escolha de dados
 
-Alem disso, indicadores municipais agregados (ex.: `pct_alfabetizados` do
-proprio ano) sao calculados a partir dos mesmos alunos que compoem o alvo
-daquele ano/municipio (vazamento agregado). Para evitar esse leakage
-temporal, todo indicador historico municipal/estadual entra no modelo
-defasado em um ano (`shift(1)` por municipio), representando apenas
-informacao que already existiria no passado quando o aluno for avaliado.
+A primeira versao deste pipeline usava `data/raw/sample` e `data/raw/gold`,
+uma amostra SINTETICA de demonstracao (81 municipios fictícios, 2021-2023)
+criada pelo gerador `pipelines/batch/generate_sample_data.py` da Fase 2 para
+permitir rodar a pipeline sem credenciais de nuvem. Ao investigar um salto
+implausivel na taxa de alfabetizacao daquela amostra (quase dobrou entre
+2021 e 2023), descobrimos que o crescimento era um artefato mecanico do
+gerador (uma meta que cresce ~10 p.p./ano por construcao, alimentando um
+sorteio de proficiencia com corte fixo) -- nao um fenomeno real.
+
+Durante essa investigacao encontramos, dentro do proprio repositorio da
+Fase 2, uma segunda fonte: `reports/gold_preview/`, um espelho real da
+camada Gold gerado a partir de dados oficiais da Base dos Dados / CNCA
+(Compromisso Nacional Crianca Alfabetizada), cobrindo **5.516 municipios
+brasileiros reais** (codigos IBGE genuinos) em 2023-2024. Esta versao do
+pipeline usa exclusivamente essa fonte real.
+
+## Por que o alvo passou a ser o MUNICIPIO, nao o aluno
+
+A tabela real de alunos individuais só existe no BigQuery (nunca foi
+exportada localmente); apenas o indicador agregado por municipio esta
+disponivel como CSV. Modelar no nivel de municipio nao e uma limitacao
+imposta por conveniencia: e exatamente uma das perguntas de negocio do
+desafio ("quais municipios apresentam maior risco?", "como prever
+municipios que podem nao atingir metas futuras?"), e permite usar dados
+100% reais em vez de uma proxy sintetica em nivel de aluno.
+
+## Vazamento identificado nesta base
+
+`atingiu_meta` (2024) e definido deterministicamente por
+`pct_alfabetizados_2024 >= meta_pct_2024` (confirmado com 100% de
+correspondencia). Por isso os valores de 2024 de `pct_alfabetizados`,
+`gap_meta_pct`, `delta_pp_ano_anterior` e `n_avaliados` sao excluidos do
+conjunto de features -- o modelo so pode usar informacao que existia
+*antes* do resultado de 2024: o desempenho do proprio municipio e da UF
+em 2023 (defasado em um ano), e as metas vigentes para 2024 (que sao
+definidas a priori, nao derivadas do resultado).
 """
 
 from __future__ import annotations
@@ -32,134 +59,92 @@ REGIAO_POR_UF = {
     "MS": "Centro-Oeste", "MT": "Centro-Oeste", "GO": "Centro-Oeste", "DF": "Centro-Oeste",
 }
 
-# Colunas que configuram vazamento direto ou agregado do alvo e nunca devem
-# entrar como feature do modelo.
+ANO_ALVO = 2024
+ANO_LAG = 2023
+
+# Colunas do ano-alvo (2024) derivadas do proprio resultado: vazamento
+# direto ou agregado, nunca entram como feature.
 LEAKAGE_COLUMNS = [
-    "proficiencia_saeb",
-    "ponto_corte",
     "pct_alfabetizados",
-    "n_avaliados",
     "gap_meta_pct",
-    "atingiu_meta",
     "delta_pp_ano_anterior",
+    "n_avaliados",
+    "camada",
+    "ponto_corte",
 ]
 
-TARGET = "alfabetizado"
-ID_COLUMNS = ["id_aluno", "id_municipio", "id_uf", "ano"]
+TARGET = "atingiu_meta"
+ID_COLUMNS = ["id_municipio", "id_uf", "ano"]
+NAME_COLUMNS = ["nome_municipio", "fonte_meta"]
 
 
 def load_raw_tables(data_dir: str | Path) -> dict[str, pd.DataFrame]:
-    """Le as tabelas de dominio e fato da camada Gold/amostra da Fase 2."""
-    data_dir = Path(data_dir)
-    sample_dir = data_dir / "sample"
-    gold_dir = data_dir / "gold"
-
+    """Le as tabelas da camada Gold real (`reports/gold_preview` da Fase 2,
+    copiadas para `data/raw/gold_preview`)."""
+    gold_dir = Path(data_dir) / "gold_preview"
     tables = {
-        "alunos": pd.read_csv(sample_dir / "alunos.csv"),
-        "municipio": pd.read_csv(sample_dir / "municipio.csv"),
-        "uf": pd.read_csv(sample_dir / "uf.csv"),
-        "meta_municipio": pd.read_csv(sample_dir / "meta_municipio.csv"),
-        "meta_uf": pd.read_csv(sample_dir / "meta_uf.csv"),
-        "meta_brasil": pd.read_csv(sample_dir / "meta_brasil.csv"),
-        "indicador_municipio": pd.read_csv(sample_dir / "indicador_municipio.csv"),
         "evolucao_municipio": pd.read_csv(gold_dir / "evolucao_temporal_municipio.csv"),
+        "evolucao_uf": pd.read_csv(gold_dir / "evolucao_temporal_uf.csv"),
+        "comparativo_uf": pd.read_csv(gold_dir / "comparativo_meta_resultado_uf.csv"),
+        "comparativo_brasil": pd.read_csv(gold_dir / "comparativo_meta_resultado_brasil.csv"),
     }
     return tables
 
 
-def _build_municipio_history(tables: dict[str, pd.DataFrame]) -> pd.DataFrame:
-    """Constroi o historico municipal ano a ano e aplica defasagem (t-1)
-    nos indicadores derivados de desempenho, evitando leakage agregado."""
-    hist = tables["indicador_municipio"][
-        ["ano", "id_municipio", "pct_alfabetizados", "n_avaliados"]
-    ].merge(
-        tables["meta_municipio"][["ano", "id_municipio", "meta_pct"]],
-        on=["ano", "id_municipio"],
-        how="left",
-    )
-    hist = hist.rename(columns={"meta_pct": "meta_pct_municipio"})
-    hist["gap_meta_pct_municipio"] = hist["pct_alfabetizados"] - hist["meta_pct_municipio"]
-    hist["atingiu_meta_municipio"] = (hist["gap_meta_pct_municipio"] >= 0).astype(int)
-
-    hist = hist.sort_values(["id_municipio", "ano"])
-    lag_cols = [
-        "pct_alfabetizados",
-        "n_avaliados",
-        "meta_pct_municipio",
-        "gap_meta_pct_municipio",
-        "atingiu_meta_municipio",
-    ]
-    for col in lag_cols:
-        hist[f"{col}_lag1"] = hist.groupby("id_municipio")[col].shift(1)
-    hist["delta_pct_alfabetizados_lag1"] = hist.groupby("id_municipio")["pct_alfabetizados"].diff().shift(1)
-
-    keep_cols = ["ano", "id_municipio"] + [f"{c}_lag1" for c in lag_cols] + [
-        "delta_pct_alfabetizados_lag1"
-    ]
-    return hist[keep_cols]
-
-
 def build_feature_table(tables: dict[str, pd.DataFrame]) -> pd.DataFrame:
-    """Junta as dimensoes territoriais/socioeconomicas e as metas vigentes
-    (nao-vazadoras) ao nivel-aluno, retornando o dataset pronto para
-    treino/teste (ainda sem split)."""
-    df = tables["alunos"].copy()
+    """Constroi a tabela municipio x atributos para o ano-alvo (2024),
+    juntando o historico defasado (2023) do proprio municipio e da UF."""
+    mun = tables["evolucao_municipio"]
 
-    df = df.merge(
-        tables["municipio"][["id_municipio", "nome_municipio"]],
-        on="id_municipio",
-        how="left",
+    cohort = mun[mun["ano"] == ANO_ALVO].copy()
+    cohort[TARGET] = cohort[TARGET].astype(bool).astype(int)
+
+    lag_municipio = (
+        mun[mun["ano"] == ANO_LAG][["id_municipio", "pct_alfabetizados"]]
+        .rename(columns={"pct_alfabetizados": "pct_alfabetizados_lag1"})
     )
-    df = df.merge(
-        tables["uf"][["id_uf", "nome_uf"]],
-        on="id_uf",
-        how="left",
+    cohort = cohort.merge(lag_municipio, on="id_municipio", how="left")
+
+    uf = tables["evolucao_uf"]
+    lag_uf = (
+        uf[uf["ano"] == ANO_LAG][["sigla_uf", "pct_alfabetizados"]]
+        .rename(columns={"pct_alfabetizados": "pct_alfabetizados_uf_lag1"})
     )
-    df["regiao"] = df["sigla_uf"].map(REGIAO_POR_UF)
+    cohort = cohort.merge(lag_uf, on="sigla_uf", how="left")
 
-    # Metas vigentes no proprio ano: sao alvos de politica publica definidos
-    # a priori (nao derivam do desempenho realizado), portanto nao configuram
-    # leakage -- sao legitimas como feature de contexto.
-    df = df.merge(
-        tables["meta_uf"][["ano", "id_uf", "meta_pct"]].rename(columns={"meta_pct": "meta_pct_uf"}),
-        on=["ano", "id_uf"],
-        how="left",
+    comp_uf = tables["comparativo_uf"]
+    meta_uf_alvo = (
+        comp_uf[comp_uf["ano"] == ANO_ALVO][["sigla_uf", "meta_pct_uf"]]
     )
-    df = df.merge(
-        tables["meta_brasil"][["ano", "meta_pct"]].rename(columns={"meta_pct": "meta_pct_brasil"}),
-        on="ano",
-        how="left",
-    )
+    cohort = cohort.merge(meta_uf_alvo, on="sigla_uf", how="left")
 
-    # Historico municipal defasado (t-1): informacao que um gestor teria
-    # disponivel *antes* do resultado do ano corrente.
-    municipio_hist = _build_municipio_history(tables)
-    df = df.merge(municipio_hist, on=["ano", "id_municipio"], how="left")
+    cohort["regiao"] = cohort["sigla_uf"].map(REGIAO_POR_UF)
 
-    # Atributo temporal simples: quantos anos de serie o municipio ja possui
-    # ate o ano corrente (proxy de maturidade de monitoramento).
-    df["ano_indice"] = df["ano"] - df["ano"].min()
-
-    return df
+    return cohort.reset_index(drop=True)
 
 
-def temporal_train_test_split(
-    df: pd.DataFrame, test_years: tuple[int, ...] = (2023,)
+def stratified_train_test_split(
+    df: pd.DataFrame, target: str = TARGET, test_size: float = 0.2, random_state: int = 42
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Divide treino/teste por ano (holdout temporal), simulando o caso de
-    uso real: treinar com anos passados e prever o ano mais recente.
-    Isso evita qualquer contaminacao entre observacoes do mesmo periodo e
-    testa a capacidade de generalizacao para o futuro."""
-    is_test = df["ano"].isin(test_years)
-    train_df = df.loc[~is_test].reset_index(drop=True)
-    test_df = df.loc[is_test].reset_index(drop=True)
-    return train_df, test_df
+    """Divide treino/teste com amostragem estratificada pelo alvo.
+
+    Os dados sao um corte transversal (todos os municipios avaliados no
+    mesmo ano-alvo, 2024) -- nao ha estrutura de painel/repeticao a
+    proteger aqui (diferente da versao anterior com dados sinteticos
+    multi-ano), entao a divisao aleatoria estratificada e a escolha
+    correta e padrao da literatura para esse cenario."""
+    from sklearn.model_selection import train_test_split
+
+    train_df, test_df = train_test_split(
+        df, test_size=test_size, random_state=random_state, stratify=df[target]
+    )
+    return train_df.reset_index(drop=True), test_df.reset_index(drop=True)
 
 
 def get_feature_columns(df: pd.DataFrame) -> tuple[list[str], list[str]]:
-    """Retorna (numericas, categoricas) excluindo alvo, IDs e colunas de
-    leakage."""
-    exclude = set(ID_COLUMNS) | {TARGET} | set(LEAKAGE_COLUMNS) | {"nome_municipio", "nome_uf"}
+    """Retorna (numericas, categoricas) excluindo alvo, IDs, nomes e
+    colunas de leakage."""
+    exclude = set(ID_COLUMNS) | {TARGET} | set(LEAKAGE_COLUMNS) | set(NAME_COLUMNS)
     numeric_cols = [
         c for c in df.select_dtypes(include=["number"]).columns if c not in exclude
     ]
@@ -172,11 +157,12 @@ def get_feature_columns(df: pd.DataFrame) -> tuple[list[str], list[str]]:
 if __name__ == "__main__":
     tables = load_raw_tables(Path(__file__).resolve().parents[2] / "data" / "raw")
     feature_df = build_feature_table(tables)
-    train_df, test_df = temporal_train_test_split(feature_df)
-    print("Shape total:", feature_df.shape)
-    print("Treino (2021-2022):", train_df.shape, "| Teste (2023):", test_df.shape)
+    print("Shape do cohort 2024:", feature_df.shape)
+    print("Taxa de atingiu_meta:", feature_df[TARGET].mean())
+    train_df, test_df = stratified_train_test_split(feature_df)
+    print("Treino:", train_df.shape, "| Teste:", test_df.shape)
     num_cols, cat_cols = get_feature_columns(feature_df)
     print("Numericas:", num_cols)
     print("Categoricas:", cat_cols)
-    print("Missing no treino (lag do primeiro ano observado):")
-    print(train_df[num_cols].isna().mean().sort_values(ascending=False).head(10))
+    print("Missing (treino):")
+    print(train_df[num_cols].isna().mean().sort_values(ascending=False))

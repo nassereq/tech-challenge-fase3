@@ -9,6 +9,13 @@ Cada modelo e envolvido em um `Pipeline` unico (pre-processamento +
 estimador) e otimizado com `RandomizedSearchCV`/`GridSearchCV` usando
 `StratifiedKFold`, garantindo que a imputacao/escalonamento sejam
 recalculados a cada fold (sem leakage entre folds de validacao cruzada).
+
+Os dados sao um corte transversal (todos os 5.516 municipios avaliados no
+mesmo ano-alvo, 2024) -- diferente da versao anterior com dados sinteticos
+multi-ano, aqui cada municipio aparece em uma unica linha, entao um
+`StratifiedKFold` simples (sem agrupamento) ja e suficiente e correto:
+nao ha risco de o mesmo municipio aparecer em treino e validacao ao
+mesmo tempo.
 """
 
 from __future__ import annotations
@@ -19,7 +26,7 @@ import numpy as np
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import GridSearchCV, RandomizedSearchCV, StratifiedGroupKFold
+from sklearn.model_selection import GridSearchCV, RandomizedSearchCV, StratifiedKFold
 from sklearn.pipeline import Pipeline
 from xgboost import XGBClassifier
 
@@ -35,14 +42,8 @@ class ModelSearchResult:
     best_cv_roc_auc: float
 
 
-def _cv() -> StratifiedGroupKFold:
-    """StratifiedGroupKFold agrupado por municipio: como o mesmo municipio
-    aparece em varios anos (estrutura de painel), um KFold ingenuo por linha
-    deixaria observacoes do mesmo municipio em treino e validacao
-    simultaneamente, vazando caracteristicas municipais entre os folds.
-    Agrupar por `id_municipio` garante que cada municipio fique inteiramente
-    em um unico fold."""
-    return StratifiedGroupKFold(n_splits=5, shuffle=True, random_state=RANDOM_STATE)
+def _cv() -> StratifiedKFold:
+    return StratifiedKFold(n_splits=5, shuffle=True, random_state=RANDOM_STATE)
 
 
 def build_search_space(preprocessor: ColumnTransformer) -> dict[str, dict]:
@@ -97,14 +98,10 @@ def build_search_space(preprocessor: ColumnTransformer) -> dict[str, dict]:
 
 
 def run_model_search(
-    X_train, y_train, preprocessor: ColumnTransformer, groups=None, n_iter: int = 40
+    X_train, y_train, preprocessor: ColumnTransformer, n_iter: int = 40
 ) -> dict[str, ModelSearchResult]:
     """Executa a busca de hiperparametros para os 3 modelos e retorna os
-    melhores estimadores (ja re-ajustados no treino completo).
-
-    `groups` deve ser o `id_municipio` de cada linha de `X_train`, usado
-    pelo StratifiedGroupKFold para nao vazar municipios entre treino e
-    validacao durante a validacao cruzada."""
+    melhores estimadores (ja re-ajustados no treino completo)."""
     search_space = build_search_space(preprocessor)
     cv = _cv()
     results: dict[str, ModelSearchResult] = {}
@@ -130,7 +127,7 @@ def run_model_search(
                 random_state=RANDOM_STATE,
                 refit=True,
             )
-        searcher.fit(X_train, y_train, groups=groups)
+        searcher.fit(X_train, y_train)
         results[name] = ModelSearchResult(
             name=name,
             best_estimator=searcher.best_estimator_,
