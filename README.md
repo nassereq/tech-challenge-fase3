@@ -277,10 +277,20 @@ educacional?" e "quais regiões possuem padrões semelhantes?" propostas no desa
 - **Ausência de covariáveis socioeconômicas reais:** a base não contém renda, IDH, infraestrutura escolar,
   formação docente ou indicadores do Censo Escolar/PNAD — variáveis que, na literatura educacional, são
   fortemente associadas à alfabetização e que aqui não puderam ser incorporadas.
-- **Forte drift temporal:** a taxa de alfabetização quase dobrou entre 2021 (36,7%) e 2023 (73,3%),
-  provavelmente refletindo uma mudança de política nacional. Extrapolar esse tipo de salto usando apenas
-  o histórico municipal é, comprovadamente (Seção 7), uma tarefa genuinamente difícil — o modelo tem
-  desempenho consistente mas modesto (ROC-AUC ~0,58) tanto em validação cruzada quanto no holdout futuro.
+- **Forte drift temporal, rastreado até a construção do gerador sintético:** a taxa de alfabetização quase
+  dobrou entre 2021 (36,7%) e 2023 (73,3%). Investigamos a causa e ela **não é um fenômeno educacional real**:
+  o script que gera esta amostra
+  (`pipelines/batch/generate_sample_data.py`, da Fase 2) define uma meta municipal que cresce ~10 p.p. por
+  ano por construção e, a partir dela, sorteia a proficiência de cada aluno em uma de duas distribuições
+  normais fixas (média 720 ou 780) conforme o resultado simulado do município esteja abaixo ou acima de 60%
+  — sempre comparada a um ponto de corte **fixo** (743). Como a meta sobe todo ano por desenho, mais
+  municípios cruzam esse limiar com o tempo e mais alunos são sorteados da distribuição de média mais alta,
+  produzindo o salto observado como **artefato mecânico do gerador**, não como uma tendência real capturada
+  a partir de dados oficiais. Isso não invalida a metodologia (pipeline, prevenção de leakage, validação),
+  mas significa que a *magnitude* do drift 2021→2023 não deve ser citada como um fato sobre a educação
+  brasileira. Extrapolar esse tipo de salto usando apenas o histórico municipal é, de qualquer forma,
+  comprovadamente (Seção 7) uma tarefa difícil — o modelo tem desempenho consistente mas modesto
+  (ROC-AUC ~0,58) tanto em validação cruzada quanto no holdout futuro.
 - **Cardinalidade municipal reduzida (81 municípios):** limita a capacidade do `OneHotEncoder` de UF/
   região de capturar nuances territoriais mais finas sem incorrer em overfitting.
 

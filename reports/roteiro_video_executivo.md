@@ -56,9 +56,12 @@ público técnico.
 > que investimento continuado em política municipal de alfabetização tem efeito persistente, e retrocessos
 > também se propagam.
 >
-> **Segundo:** as **metas estaduais e nacionais** aparecem como segundo fator mais relevante — o que sugere
-> que metas bem comunicadas e ambiciosas realmente correlacionam com resultado, reforçando o valor de
-> manter e comunicar bem o Compromisso Nacional Criança Alfabetizada.
+> **Segundo:** as **metas estaduais vigentes** aparecem entre os fatores mais relevantes — o que sugere
+> que metas bem comunicadas e ambiciosas realmente correlacionam com o resultado. Vale um adendo de
+> honestidade técnica aqui: nesta amostra de demonstração, a própria meta cresce de forma artificial ano a
+> ano por construção do gerador de dados — então essa correlação específica não deve ser lida como prova
+> de causalidade real. É um bom exemplo de por que sempre auditamos como os dados foram gerados antes de
+> tirar conclusões.
 >
 > **Terceiro:** existe **heterogeneidade regional significativa** nos dados analisados — o que reforça um
 > ponto metodológico importante: como ainda trabalhamos com uma amostra sintética de demonstração, não
@@ -96,9 +99,13 @@ regional).
 > próxima etapa que propomos: enriquecer a base com essas fontes, sem precisar refazer o pipeline que já
 > construímos — ele foi desenhado para isso.
 >
-> Também recomendamos que, uma vez em produção, o modelo seja **retreinado a cada novo ciclo de dados**,
-> porque identificamos que a política nacional está mudando rápido o padrão de alfabetização — o que é
-> ótimo para o país, mas exige que a ferramenta acompanhe essa evolução."
+> Também recomendamos que, uma vez em produção com dados reais, o modelo seja **retreinado a cada novo
+> ciclo de dados** — indicadores educacionais mudam com o tempo, e um modelo estático perde precisão. Isso
+> é ainda mais importante do que parece nesta amostra de demonstração: nós mesmos auditamos o gerador dos
+> dados sintéticos e descobrimos que o forte crescimento da taxa entre 2021 e 2023 é um artefato de como a
+> amostra foi construída, não um padrão real do país. Contar essa descoberta para vocês agora é parte do
+> nosso compromisso de transparência: preferimos admitir os limites da base a apresentar um número
+> chamativo sem explicá-lo."
 
 ## Bloco 6 — Encerramento (4:40 – 5:00)
 
