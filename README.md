@@ -313,4 +313,6 @@ Os slides de apoio (11 telas, seguindo os 6 blocos do roteiro) estão em
 [`reports/apresentacao_executiva/apresentacao.html`](reports/apresentacao_executiva/apresentacao.html) —
 um arquivo único e autocontido: basta abrir com dois cliques em qualquer navegador (não depende de
 internet, conta ou instalação). Use as setas do teclado (ou os botões na tela) para navegar, `F` para
-tela cheia. O código-fonte editável de cada slide (`.dc.html`) fica na mesma pasta.
+tela cheia. Uma versão pronta para impressão/compartilhamento está em
+[`reports/apresentacao_executiva/apresentacao-executiva.pdf`](reports/apresentacao_executiva/apresentacao-executiva.pdf)
+(11 páginas, 16:9). O código-fonte editável de cada slide (`.dc.html`) fica na mesma pasta.
