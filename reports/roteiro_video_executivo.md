@@ -6,10 +6,8 @@ o problema, os principais insights e o valor estratégico da solução de Machin
 **Participantes sugeridos:** 1 a 2 apresentadores (papel de "cientista de dados" apresentando aos
 "gestores públicos"). Se gravado em grupo, dividir os blocos abaixo entre os integrantes.
 
-**Materiais de apoio a ter em tela:** `reports/images/eda_target_distribution.png`,
-`reports/images/eda_regiao_vs_target.png`, tabela comparativa de modelos (Seção 7 do README),
-`reports/images/shap_summary.png`, `reports/images/risk_top_municipios.png`,
-`reports/images/cluster_municipios.png`.
+**Materiais de apoio a ter em tela:** os 11 slides em
+`reports/apresentacao_executiva/apresentacao.html`, seguindo a mesma ordem dos blocos abaixo.
 
 ---
 
@@ -18,111 +16,118 @@ o problema, os principais insights e o valor estratégico da solução de Machin
 **Tom:** direto, contextualizando a urgência do tema para quem decide política pública, não para um
 público técnico.
 
-> "Bom dia a todos. Obrigado pelo tempo de vocês. Hoje eu quero apresentar como transformamos os dados que
-> já coletamos sobre o Indicador Criança Alfabetizada em uma ferramenta prática de decisão.
+> "Bom dia a todos. Obrigado pelo tempo de vocês. Hoje eu quero apresentar como transformamos os dados
+> oficiais do Compromisso Nacional Criança Alfabetizada em uma ferramenta prática de decisão.
 >
 > O problema que estamos resolvendo é simples de enunciar e difícil de resolver: **como saber, ainda
-> durante o ano letivo, quais municípios correm risco de não alfabetizar suas crianças a tempo — antes que
-> o resultado final chegue?**
+> durante o ciclo de avaliação, quais municípios correm risco de não atingir sua meta de alfabetização —
+> antes que o resultado final chegue?**
 >
-> Hoje esse diagnóstico só existe *depois* do resultado. Nosso objetivo foi antecipar esse sinal."
+> Hoje esse diagnóstico só existe *depois* do resultado. Nosso objetivo foi antecipar esse sinal, usando
+> dados reais de 5.516 municípios brasileiros."
 
-**Tela:** `eda_target_distribution.png` — mostrar a evolução da taxa de alfabetização 2021-2023.
+**Tela:** Slide 1 (título) → Slide 2 (o problema).
 
 ## Bloco 2 — O que construímos (0:45 – 1:45)
 
-> "Partindo da base Gold que estruturamos na fase anterior — indicadores de alfabetização, metas
-> municipais, estaduais e nacionais, e dados territoriais — construímos um modelo de Machine Learning que
-> aprende com o histórico de cada município para estimar a probabilidade de um aluno ser alfabetizado.
+> "Partindo da base Gold oficial da Base dos Dados e do CNCA — indicadores de alfabetização, metas
+> municipais e estaduais, e dados territoriais — construímos um modelo de Machine Learning que aprende com
+> o histórico de cada município para estimar a probabilidade de ele atingir sua meta.
 >
 > Testamos três abordagens diferentes: um modelo estatístico mais simples e interpretável, e dois modelos
-> de conjunto de árvores mais sofisticados. O melhor deles — uma Random Forest — foi escolhido depois de um
+> de conjunto de árvores mais sofisticados. O melhor deles — um XGBoost — foi escolhido depois de um
 > processo rigoroso de comparação e otimização.
 >
 > Um ponto que quero destacar porque é o que dá confiança nesse tipo de análise: **encontramos e corrigimos
-> dois vazamentos de informação** durante a construção do modelo — casos em que, sem querer, o modelo
-> poderia estar 'colando' a partir do próprio resultado que deveria prever. Corrigimos isso construindo o
-> modelo para usar apenas informação que um gestor teria disponível **antes** do resultado sair, o que torna
-> a ferramenta genuinamente preditiva, e não uma ilusão estatística."
-
-**Tela:** tabela comparativa de modelos (README, Seção 7).
-
-## Bloco 3 — Principais insights (1:45 – 3:00)
-
-> "Três achados relevantes para orientar decisão:
+> um vazamento de informação** durante a construção do modelo — o resultado do próprio município no ano
+> avaliado não podia ser usado para prevê-lo. Corrigimos isso construindo o modelo para usar apenas
+> informação que um gestor teria disponível **antes** do resultado sair.
 >
-> **Primeiro:** o fator que mais explica a alfabetização de um município é o **histórico recente do
-> próprio município** — quem vinha melhorando, tende a continuar melhorando. Isso é uma boa notícia: mostra
-> que investimento continuado em política municipal de alfabetização tem efeito persistente, e retrocessos
-> também se propagam.
->
-> **Segundo:** as **metas estaduais vigentes** aparecem entre os fatores mais relevantes — o que sugere
-> que metas bem comunicadas e ambiciosas realmente correlacionam com o resultado. Vale um adendo de
-> honestidade técnica aqui: nesta amostra de demonstração, a própria meta cresce de forma artificial ano a
-> ano por construção do gerador de dados — então essa correlação específica não deve ser lida como prova
-> de causalidade real. É um bom exemplo de por que sempre auditamos como os dados foram gerados antes de
-> tirar conclusões.
->
-> **Terceiro:** existe **heterogeneidade regional significativa** nos dados analisados — o que reforça um
-> ponto metodológico importante: como ainda trabalhamos com uma amostra sintética de demonstração, não
-> podemos usar essa base para tirar conclusão sobre qual região do Brasil está pior hoje. O valor real aqui
-> é outro: já validamos que o modelo é sensível a diferenças regionais e consegue quantificar esse tipo de
-> gap — assim que plugarmos dados reais do INEP, a mesma metodologia vai gerar o diagnóstico regional
-> verdadeiro, região a região."
+> E quero ser transparente sobre um outro ponto: a primeira versão deste projeto usava uma amostra
+> sintética de demonstração. Ao notar um número que não fazia sentido, investigamos, confirmamos que era um
+> artefato dos dados de teste, e voltamos à base real oficial da Fase 2 — os números que vocês vão ver
+> agora são dados reais do Brasil, não uma simulação."
 
-**Tela:** `shap_summary.png` (fatores de maior impacto) e `eda_regiao_vs_target.png` (desigualdade
-regional).
+**Tela:** Slide 3 (pipeline) → Slide 4 (vazamento corrigido).
+
+## Bloco 3 — Comparação de modelos e principal insight (1:45 – 3:00)
+
+> "O modelo campeão atinge uma capacidade preditiva consistente — a mesma performance na validação e no
+> teste, o que nos dá confiança de que não é sorte.
+>
+> E aqui está o achado mais importante da análise, que eu chamo de **o paradoxo do Sul**: se vocês olharem
+> só a taxa de municípios que atingiram a meta por região, o Sul aparece com a **pior** taxa do Brasil —
+> soaria como se o Sul tivesse o pior ensino. Mas não é isso que está acontecendo.
+>
+> Quando olhamos o desempenho absoluto do Rio Grande do Sul, ele está na **média** do país. O problema é
+> que a meta definida para o RS é **muito mais ambiciosa**, proporcionalmente, do que a de outros estados —
+> por isso só 1 em cada 10 municípios gaúchos consegue atingi-la.
+>
+> Compare com a Bahia: desempenho absoluto genuinamente baixo, mas meta proporcionalmente mais modesta —
+> ainda assim, menos de 1 em cada 5 municípios baianos atinge a meta.
+>
+> São dois problemas completamente diferentes que exigem soluções diferentes: o Rio Grande do Sul talvez
+> precise de mais tempo ou uma meta recalibrada; a Bahia precisa de investimento estrutural em capacidade
+> de alfabetização. Tratar os dois com a mesma política seria um erro."
+
+**Tela:** Slide 5 (comparação de modelos) → Slide 6/7 (paradoxo do Sul).
 
 ## Bloco 4 — Da predição à ação: risco municipal e agrupamentos (3:00 – 4:00)
 
-> "Mas o mais importante para vocês, gestores, não é o modelo — é o que ele permite fazer. Duas entregas
-> práticas:
+> "Duas entregas práticas para vocês, gestores:
 >
-> A primeira é um **ranking de risco por município**, atualizado a cada novo ciclo de dados, classificando
-> cada município em alto risco, risco moderado ou baixo risco de não atingir a meta de alfabetização. Isso
-> permite priorizar visitas técnicas, reforço pedagógico e distribuição de recursos **antes** do resultado
-> final — não depois.
+> A primeira é um **ranking de risco por município**: 1.585 municípios em alto risco, 1.722 em risco
+> moderado, 2.209 em baixo risco — atualizado a cada novo ciclo de dados. Isso permite priorizar visitas
+> técnicas e apoio pedagógico **antes** do resultado final.
 >
-> A segunda é um **agrupamento de municípios com padrões semelhantes** — o que nos permite recomendar
-> estratégias diferenciadas por grupo, em vez de uma política única para 5.570 realidades diferentes.
-> Municípios com desempenho já consolidado podem, inclusive, servir de referência e mentoria para os
-> grupos que ainda enfrentam gap persistente em relação à meta."
+> Um ponto de honestidade técnica sobre esse ranking: hoje ele é fortemente influenciado pela identidade do
+> estado — os municípios de maior risco no nosso modelo são, em sua maioria, do Rio Grande do Sul, pelo
+> motivo que acabei de explicar. Isso significa que o modelo já é útil para **comparar estados entre si**,
+> mas ainda precisa de mais variáveis — renda, infraestrutura escolar — para diferenciar risco **dentro**
+> de um mesmo estado com mais precisão.
+>
+> A segunda entrega é um **agrupamento de municípios em 4 perfis**: municípios de referência, que já
+> superam metas ambiciosas; municípios consistentes; municípios com desempenho moderado; e municípios que
+> precisam de atenção prioritária. Isso permite recomendar estratégias diferenciadas por perfil, em vez de
+> uma meta única nacional."
 
-**Tela:** `risk_top_municipios.png` e `cluster_municipios.png`.
+**Tela:** Slide 8 (ranking de risco) → Slide 9 (clusters).
 
 ## Bloco 5 — Limites, honestidade técnica e próximos passos (4:00 – 4:40)
 
-> "Quero ser transparente sobre os limites desse primeiro modelo, porque isso é parte de fazer ciência de
-> dados responsável em política pública: o modelo hoje tem um poder preditivo **moderado, não perfeito** —
-> e isso é esperado, porque ainda não incorporamos variáveis-chave como renda familiar, infraestrutura
-> escolar e formação docente, disponíveis em bases como Censo Escolar, PNAD e FUNDEB. Essa é exatamente a
-> próxima etapa que propomos: enriquecer a base com essas fontes, sem precisar refazer o pipeline que já
-> construímos — ele foi desenhado para isso.
+> "Quero ser transparente sobre os limites desse modelo. Primeiro: ele prevê o resultado do **município**,
+> não de um aluno específico — a base de alunos individuais só existe na nuvem da equipe da Fase 2, e não
+> tivemos acesso a ela nesta etapa. Segundo: ainda não incorporamos variáveis-chave como renda familiar,
+> infraestrutura escolar e formação docente, que ajudariam a explicar por que municípios de um mesmo estado
+> variam tanto entre si.
 >
-> Também recomendamos que, uma vez em produção com dados reais, o modelo seja **retreinado a cada novo
-> ciclo de dados** — indicadores educacionais mudam com o tempo, e um modelo estático perde precisão. Isso
-> é ainda mais importante do que parece nesta amostra de demonstração: nós mesmos auditamos o gerador dos
-> dados sintéticos e descobrimos que o forte crescimento da taxa entre 2021 e 2023 é um artefato de como a
-> amostra foi construída, não um padrão real do país. Contar essa descoberta para vocês agora é parte do
-> nosso compromisso de transparência: preferimos admitir os limites da base a apresentar um número
-> chamativo sem explicá-lo."
+> Essa é exatamente a próxima etapa que propomos: enriquecer a base com essas fontes — Censo Escolar, PNAD,
+> FUNDEB — sem precisar refazer o pipeline que já construímos, porque ele foi desenhado para isso.
+>
+> Também recomendamos investigar, junto à equipe responsável pelas metas, por que alguns estados recebem
+> metas tão acima do seu histórico recente — um achado que veio da análise de dados e que merece uma
+> conversa com quem define essas metas."
+
+**Tela:** Slide 10 (limitações).
 
 ## Bloco 6 — Encerramento (4:40 – 5:00)
 
-> "Em resumo: entregamos um pipeline reprodutível, auditável e já com prevenção explícita de vieses
-> técnicos, que transforma o indicador que vocês já acompanham em um **radar de risco antecipado** e em
-> **agrupamentos acionáveis** de municípios. O próximo passo é validar esse radar em campo, com dados reais
-> de um ou dois estados-piloto, e evoluir a base de variáveis junto com as secretarias regionais.
+> "Em resumo: entregamos um pipeline reprodutível, auditável, construído sobre dados reais de 5.516
+> municípios brasileiros, que já identificou um padrão real e acionável — o paradoxo do Sul — que passaria
+> despercebido em um olhar superficial dos dados.
 >
-> Fico à disposição para aprofundar qualquer um desses pontos. Obrigado."
+> O próximo passo é aprofundar essa análise com dados socioeconômicos reais e validar o ranking de risco
+> com as secretarias estaduais. Fico à disposição para aprofundar qualquer um desses pontos. Obrigado."
+
+**Tela:** Slide 11 (encerramento).
 
 ---
 
 ## Checklist de gravação
 
 - [ ] Ensaiar cronometrando cada bloco (o roteiro soma ~5:00 no ritmo de fala pausado/executivo).
-- [ ] Ter as imagens de `reports/images/` abertas/prontas para compartilhar tela na ordem indicada.
+- [ ] Ter os slides de `reports/apresentacao_executiva/apresentacao.html` prontos, na ordem indicada.
 - [ ] Evitar jargão técnico não explicado (ROC-AUC, SHAP, etc.) — traduzir sempre para a implicação de
   negócio, como feito nas falas acima.
-- [ ] Fechar com um pedido de próximo passo concreto (piloto com dados reais), não apenas uma conclusão
-  genérica.
+- [ ] Fechar com um pedido de próximo passo concreto (validação com secretarias estaduais), não apenas uma
+  conclusão genérica.

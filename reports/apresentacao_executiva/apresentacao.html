@@ -61,6 +61,29 @@
     }
     .slide > div { width:1920px; height:1080px; transform:scale(0.545); transform-origin:top left; }
   }
+
+  /* ===== BEGIN per-slide component styles ===== */
+    /* from Slide03_Solucao.dc.html */
+  .step-num { font:700 22px 'Source Serif 4'; color:#FFFFFF; width:48px; height:48px; border-radius:50%; background:#1D3F63; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .arrow { flex-shrink:0; }
+  /* from Slide05_Comparacao.dc.html */
+  .bar-row { display:flex; align-items:center; gap:28px; }
+  .bar-track { flex:1; height:40px; background:#EFE7D6; border-radius:4px; overflow:hidden; }
+  .bar-fill { height:100%; border-radius:4px; }
+  /* from Slide06_Insight1.dc.html */
+  .frow { display:flex; align-items:center; gap:24px; }
+  .ftrack { flex:1; height:34px; background:#EFE7D6; border-radius:4px; overflow:hidden; }
+  .ffill { height:100%; background:#1D3F63; border-radius:4px; }
+  /* from Slide08_Risco.dc.html */
+  .rrow { display:flex; align-items:center; gap:24px; padding:14px 0; border-bottom:1px solid #EFE7D6; }
+  .rtrack { flex:1; height:30px; background:#EFE7D6; border-radius:4px; overflow:hidden; }
+  .rfill { height:100%; background:#A85338; border-radius:4px; }
+  /* from Slide09_Clusters.dc.html */
+  .cell { flex:1; border-radius:4px; padding:32px 36px; }
+  .badge { display:inline-block; font:600 14px 'Public Sans'; letter-spacing:0.06em; text-transform:uppercase; padding:5px 12px; border-radius:3px; }
+  /* from Slide10_Limitacoes.dc.html */
+  .litem { display:flex; gap:24px; align-items:flex-start; padding:22px 0; border-bottom:1px solid #E7DFCE; }
+  /* ===== END per-slide component styles ===== */
 </style>
 </head>
 <body>
@@ -70,19 +93,25 @@
 <!-- ===================== SLIDE 1 ===================== -->
 <div class="slide active" data-i="1">
 <div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#0F2038; font-family:'Public Sans', system-ui, sans-serif; color:#F3E4CB;">
+
   <div style="position:absolute; top:-220px; right:-220px; width:900px; height:900px; border-radius:50%; background:radial-gradient(circle at 30% 30%, #1D3F63 0%, #0F2038 70%); opacity:0.9;"></div>
   <div style="position:absolute; left:0; top:0; bottom:0; width:14px; background:#C08A34;"></div>
+
   <div style="position:relative; padding:120px 140px 0 160px;">
     <div style="font:600 20px/1 'Public Sans'; letter-spacing:0.18em; text-transform:uppercase; color:#C08A34;">
       Tech Challenge &middot; Fase 3 &middot; P&oacute;s Tech FIAP
     </div>
+
     <h1 style="font:700 76px/1.12 'Source Serif 4'; color:#FFFFFF; margin:32px 0 0; max-width:1360px;">
       Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil
     </h1>
+
     <p style="font:400 28px/1.5 'Public Sans'; color:#DCE6F0; max-width:1080px; margin:40px 0 0;">
-      Reuni&atilde;o executiva &mdash; como transformar o Indicador Crian&ccedil;a Alfabetizada em um radar de
-      risco antecipado para gestores p&uacute;blicos.
+      Reuni&atilde;o executiva &mdash; um radar de risco antecipado para gestores p&uacute;blicos, constru&iacute;do
+      sobre dados <strong style="color:#FFFFFF;">reais</strong> de 5.516 munic&iacute;pios brasileiros
+      (Base dos Dados / CNCA).
     </p>
+
     <div style="margin-top:88px; display:flex; gap:64px; align-items:center;">
       <div style="width:64px; height:2px; background:#C08A34;"></div>
       <div style="font:500 20px/1.4 'Public Sans'; color:#B9C4D0;">
@@ -90,6 +119,7 @@
       </div>
     </div>
   </div>
+
   <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0A1729; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#8EA0B4;">
     <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
     <span>01 / 11</span>
@@ -100,6 +130,7 @@
 <!-- ===================== SLIDE 2 ===================== -->
 <div class="slide" data-i="2">
 <div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#FAF6EF; font-family:'Public Sans', system-ui, sans-serif; color:#17222E;">
+
   <div style="padding:96px 140px 0 160px;">
     <div style="font:600 18px/1 'Public Sans'; letter-spacing:0.16em; text-transform:uppercase; color:#9C6B1F;">
       Bloco 1 &middot; O Problema
@@ -112,51 +143,48 @@
       antes do resultado final, n&atilde;o depois?
     </p>
   </div>
+
   <div style="display:flex; gap:80px; padding:64px 140px 0 160px; align-items:flex-end;">
+
     <div style="flex:1.15; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:44px 48px;">
       <div style="font:600 16px/1 'Public Sans'; letter-spacing:0.1em; text-transform:uppercase; color:#55606B; margin-bottom:32px;">
-        Taxa de alfabetiza&ccedil;&atilde;o &mdash; evolu&ccedil;&atilde;o anual
+        O retrato de 2024 &mdash; dados reais, Base dos Dados / CNCA
       </div>
-      <div style="display:flex; align-items:flex-end; gap:56px; height:340px;">
-        <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;">
-          <div style="font:700 30px 'Source Serif 4'; color:#0F2038; margin-bottom:10px;">36,7%</div>
-          <div style="width:120px; height:124px; background:#DCE6F0; border-radius:3px 3px 0 0;"></div>
-          <div style="font:500 20px 'Public Sans'; color:#55606B; margin-top:14px;">2021</div>
+
+      <div style="display:flex; gap:40px;">
+        <div style="flex:1; text-align:center;">
+          <div style="font:700 56px 'Source Serif 4'; color:#0F2038;">5.516</div>
+          <div style="font:500 19px 'Public Sans'; color:#55606B; margin-top:8px;">munic&iacute;pios brasileiros avaliados</div>
         </div>
-        <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;">
-          <div style="font:700 30px 'Source Serif 4'; color:#0F2038; margin-bottom:10px;">49,9%</div>
-          <div style="width:120px; height:169px; background:#9BB4CC; border-radius:3px 3px 0 0;"></div>
-          <div style="font:500 20px 'Public Sans'; color:#55606B; margin-top:14px;">2022</div>
+        <div style="flex:1; text-align:center; border-left:1px solid #E7DFCE; border-right:1px solid #E7DFCE;">
+          <div style="font:700 56px 'Source Serif 4'; color:#9C6B1F;">53,3%</div>
+          <div style="font:500 19px 'Public Sans'; color:#55606B; margin-top:8px;">atingiram sua meta de alfabetiza&ccedil;&atilde;o</div>
         </div>
-        <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;">
-          <div style="font:700 34px 'Source Serif 4'; color:#9C6B1F; margin-bottom:10px;">73,3%</div>
-          <div style="width:120px; height:248px; background:#C08A34; border-radius:3px 3px 0 0;"></div>
-          <div style="font:600 20px 'Public Sans'; color:#0F2038; margin-top:14px;">2023</div>
+        <div style="flex:1; text-align:center;">
+          <div style="font:700 56px 'Source Serif 4'; color:#0F2038;">46,7%</div>
+          <div style="font:500 19px 'Public Sans'; color:#55606B; margin-top:8px;">ficaram abaixo da pr&oacute;pria meta</div>
         </div>
       </div>
-      <div style="font:400 17px/1.5 'Public Sans'; color:#8A93A0; margin-top:28px; max-width:520px;">
-        Base de alunos avaliados, 2021&ndash;2023 (amostra sint&eacute;tica de demonstra&ccedil;&atilde;o da
-        Fase 2).
+      <div style="font:400 17px/1.5 'Public Sans'; color:#8A93A0; margin-top:32px; max-width:700px;">
+        Quase metade dos munic&iacute;pios do Brasil n&atilde;o atingiu sua meta em 2024 &mdash; mas isso
+        s&oacute; se sabe depois que o resultado sai.
       </div>
     </div>
+
     <div style="flex:1; padding-bottom:24px;">
       <div style="border-left:4px solid #C08A34; padding-left:32px;">
         <p style="font:600 30px/1.4 'Source Serif 4'; color:#0F2038; margin:0;">
-          O problema de fundo &eacute; real, mesmo numa amostra de demonstra&ccedil;&atilde;o.
+          46,7% dos munic&iacute;pios n&atilde;o atingiram a meta. E hoje, s&oacute; descobrimos isso depois.
         </p>
         <p style="font:400 22px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
-          Auditamos como esses dados foram gerados: esse salto espec&iacute;fico &eacute; um artefato da
-          amostra, n&atilde;o uma melhoria real medida em campo &mdash; vamos ser transparentes sobre isso
-          mais adiante.
-        </p>
-        <p style="font:400 22px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
-          Ainda assim, gestores reais precisam de um jeito de enxergar risco
-          <strong style="color:#0F2038;">antes</strong> do pr&oacute;ximo resultado, n&atilde;o s&oacute; de
-          olhar para tr&aacute;s.
+          Gestores precisam de um jeito de enxergar risco <strong style="color:#0F2038;">antes</strong> do
+          pr&oacute;ximo resultado &mdash; para direcionar apoio pedag&oacute;gico enquanto ainda h&aacute;
+          tempo de agir, n&atilde;o s&oacute; de registrar o que j&aacute; aconteceu.
         </p>
       </div>
     </div>
   </div>
+
   <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0F2038; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#B9C4D0;">
     <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
     <span>02 / 11</span>
@@ -167,6 +195,7 @@
 <!-- ===================== SLIDE 3 ===================== -->
 <div class="slide" data-i="3">
 <div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#FAF6EF; font-family:'Public Sans', system-ui, sans-serif; color:#17222E;">
+
   <div style="padding:96px 140px 0 160px;">
     <div style="font:600 18px/1 'Public Sans'; letter-spacing:0.16em; text-transform:uppercase; color:#9C6B1F;">
       Bloco 2 &middot; O Que Constru&iacute;mos
@@ -176,56 +205,66 @@
       resultado sair
     </h1>
   </div>
+
   <div style="display:flex; align-items:stretch; gap:0; padding:96px 140px 0 160px;">
+
     <div style="flex:1; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:36px 32px; display:flex; flex-direction:column; gap:18px;">
-      <div style="font:700 22px 'Source Serif 4'; color:#FFFFFF; width:48px; height:48px; border-radius:50%; background:#1D3F63; display:flex; align-items:center; justify-content:center; flex-shrink:0;">1</div>
-      <div style="font:700 24px/1.3 'Source Serif 4'; color:#0F2038; margin-top:8px;">Dados Gold</div>
+      <div class="step-num">1</div>
+      <div style="font:700 24px/1.3 'Source Serif 4'; color:#0F2038; margin-top:8px;">Dados Gold reais</div>
       <div style="font:400 18px/1.55 'Public Sans'; color:#55606B;">
-        Indicadores de alfabetiza&ccedil;&atilde;o, metas municipais/estaduais/nacionais e territ&oacute;rio,
-        constru&iacute;dos na Fase 2.
+        5.516 munic&iacute;pios, Base dos Dados / CNCA: indicadores de alfabetiza&ccedil;&atilde;o, metas e
+        territ&oacute;rio.
       </div>
     </div>
-    <svg width="64" height="220" viewBox="0 0 64 220" style="align-self:center; flex-shrink:0;">
+
+    <svg class="arrow" width="64" height="220" viewBox="0 0 64 220" style="align-self:center;">
       <line x1="4" y1="110" x2="52" y2="110" stroke="#C08A34" stroke-width="3"/>
       <path d="M40 96 L58 110 L40 124" fill="none" stroke="#C08A34" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
+
     <div style="flex:1; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:36px 32px; display:flex; flex-direction:column; gap:18px;">
-      <div style="font:700 22px 'Source Serif 4'; color:#FFFFFF; width:48px; height:48px; border-radius:50%; background:#1D3F63; display:flex; align-items:center; justify-content:center; flex-shrink:0;">2</div>
+      <div class="step-num">2</div>
       <div style="font:700 24px/1.3 'Source Serif 4'; color:#0F2038; margin-top:8px;">Engenharia de atributos</div>
       <div style="font:400 18px/1.55 'Public Sans'; color:#55606B;">
-        Hist&oacute;rico municipal do ano anterior, metas vigentes e regi&atilde;o &mdash; sem usar nada que
-        vaze o pr&oacute;prio resultado.
+        Hist&oacute;rico do munic&iacute;pio e da UF no ano anterior, meta vigente e regi&atilde;o &mdash;
+        sem usar nada que vaze o pr&oacute;prio resultado.
       </div>
     </div>
-    <svg width="64" height="220" viewBox="0 0 64 220" style="align-self:center; flex-shrink:0;">
+
+    <svg class="arrow" width="64" height="220" viewBox="0 0 64 220" style="align-self:center;">
       <line x1="4" y1="110" x2="52" y2="110" stroke="#C08A34" stroke-width="3"/>
       <path d="M40 96 L58 110 L40 124" fill="none" stroke="#C08A34" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
+
     <div style="flex:1; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:36px 32px; display:flex; flex-direction:column; gap:18px;">
-      <div style="font:700 22px 'Source Serif 4'; color:#FFFFFF; width:48px; height:48px; border-radius:50%; background:#1D3F63; display:flex; align-items:center; justify-content:center; flex-shrink:0;">3</div>
+      <div class="step-num">3</div>
       <div style="font:700 24px/1.3 'Source Serif 4'; color:#0F2038; margin-top:8px;">3 modelos comparados</div>
       <div style="font:400 18px/1.55 'Public Sans'; color:#55606B;">
         Regress&atilde;o Log&iacute;stica, Random Forest e XGBoost, testados lado a lado com o mesmo crit&eacute;rio.
       </div>
     </div>
-    <svg width="64" height="220" viewBox="0 0 64 220" style="align-self:center; flex-shrink:0;">
+
+    <svg class="arrow" width="64" height="220" viewBox="0 0 64 220" style="align-self:center;">
       <line x1="4" y1="110" x2="52" y2="110" stroke="#C08A34" stroke-width="3"/>
       <path d="M40 96 L58 110 L40 124" fill="none" stroke="#C08A34" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
+
     <div style="flex:1; background:#0F2038; border-radius:4px; padding:36px 32px; display:flex; flex-direction:column; gap:18px;">
-      <div style="font:700 22px 'Source Serif 4'; color:#FFFFFF; width:48px; height:48px; border-radius:50%; background:#C08A34; display:flex; align-items:center; justify-content:center; flex-shrink:0;">4</div>
+      <div class="step-num" style="background:#C08A34;">4</div>
       <div style="font:700 24px/1.3 'Source Serif 4'; color:#FFFFFF; margin-top:8px;">Modelo campe&atilde;o</div>
       <div style="font:400 18px/1.55 'Public Sans'; color:#DCE6F0;">
-        Random Forest, validado com valida&ccedil;&atilde;o cruzada e testado prevendo um ano que ele nunca viu (2023).
+        XGBoost, validado com valida&ccedil;&atilde;o cruzada e testado em munic&iacute;pios que ele nunca viu no treino.
       </div>
     </div>
   </div>
+
   <div style="padding:64px 140px 0 160px; max-width:1300px;">
     <p style="font:400 22px/1.6 'Public Sans'; color:#55606B; border-left:4px solid #C08A34; padding-left:32px; margin:0;">
       Pr&eacute;-processamento e modelo vivem em um <strong style="color:#0F2038;">pipeline &uacute;nico e reprodut&iacute;vel</strong>
       &mdash; nenhuma decis&atilde;o &eacute; manual ou espec&iacute;fica de uma planilha.
     </p>
   </div>
+
   <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0F2038; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#B9C4D0;">
     <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
     <span>03 / 11</span>
@@ -236,57 +275,64 @@
 <!-- ===================== SLIDE 4 ===================== -->
 <div class="slide" data-i="4">
 <div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#FAF6EF; font-family:'Public Sans', system-ui, sans-serif; color:#17222E;">
+
   <div style="padding:96px 140px 0 160px;">
     <div style="font:600 18px/1 'Public Sans'; letter-spacing:0.16em; text-transform:uppercase; color:#9C6B1F;">
       Bloco 2 &middot; Rigor T&eacute;cnico
     </div>
     <h1 style="font:700 52px/1.2 'Source Serif 4'; color:#0F2038; margin:24px 0 0; max-width:1400px;">
-      Encontramos e corrigimos dois vazamentos de informa&ccedil;&atilde;o antes de confiar no modelo
+      Dois cuidados que separam um modelo confi&aacute;vel de uma ilus&atilde;o estat&iacute;stica
     </h1>
     <p style="font:400 24px/1.55 'Public Sans'; color:#55606B; max-width:1200px; margin:24px 0 0;">
       Vazamento acontece quando o modelo, sem querer, tem acesso a informa&ccedil;&atilde;o que s&oacute;
       existiria <em>depois</em> do resultado &mdash; e passa a "colar" em vez de prever de verdade.
     </p>
   </div>
+
   <div style="display:flex; gap:56px; padding:64px 140px 0 160px;">
+
     <div style="flex:1; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:44px 40px;">
       <div style="display:inline-block; font:600 15px 'Public Sans'; letter-spacing:0.08em; text-transform:uppercase; color:#A85338; background:#F0DCD3; padding:6px 14px; border-radius:3px;">
-        Vazamento 1
+        Vazamento de dados
       </div>
       <h2 style="font:700 30px/1.35 'Source Serif 4'; color:#0F2038; margin:24px 0 0;">
-        A nota j&aacute; continha a resposta
+        O indicador "sabia" a pr&oacute;pria resposta
       </h2>
       <p style="font:400 21px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
-        A profici&ecirc;ncia do aluno na avalia&ccedil;&atilde;o definia matematicamente se ele seria
-        classificado como alfabetizado &mdash; usar essa nota seria prever o passado, n&atilde;o o futuro.
+        Saber se um munic&iacute;pio atingiu a meta em 2024 j&aacute; exige comparar o resultado de 2024 com
+        a meta de 2024 &mdash; usar o resultado do pr&oacute;prio ano como vari&aacute;vel seria prever o
+        presente com o presente.
       </p>
       <div style="margin-top:28px; padding-top:24px; border-top:1px solid #E7DFCE; font:600 19px 'Public Sans'; color:#0F2038;">
-        Corre&ccedil;&atilde;o: removida do conjunto de vari&aacute;veis do modelo.
+        Corre&ccedil;&atilde;o: modelo usa apenas o hist&oacute;rico de 2023 e a meta vigente.
       </div>
     </div>
+
     <div style="flex:1; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:44px 40px;">
       <div style="display:inline-block; font:600 15px 'Public Sans'; letter-spacing:0.08em; text-transform:uppercase; color:#A85338; background:#F0DCD3; padding:6px 14px; border-radius:3px;">
-        Vazamento 2
+        Corre&ccedil;&atilde;o de rota
       </div>
       <h2 style="font:700 30px/1.35 'Source Serif 4'; color:#0F2038; margin:24px 0 0;">
-        O indicador do munic&iacute;pio "sabia" o pr&oacute;prio resultado
+        Trocamos os dados no meio do caminho
       </h2>
       <p style="font:400 21px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
-        O percentual de alfabetiza&ccedil;&atilde;o do munic&iacute;pio no ano corrente j&aacute; inclu&iacute;a
-        o resultado do pr&oacute;prio aluno sendo avaliado pelo modelo.
+        A primeira vers&atilde;o usava uma amostra sint&eacute;tica de teste. Um n&uacute;mero implaus&iacute;vel
+        nos fez investigar, confirmar que era um artefato da amostra, e voltar &agrave; base real da Fase 2.
       </p>
       <div style="margin-top:28px; padding-top:24px; border-top:1px solid #E7DFCE; font:600 19px 'Public Sans'; color:#0F2038;">
-        Corre&ccedil;&atilde;o: modelo usa apenas o hist&oacute;rico do ano anterior.
+        O que voc&ecirc;s v&ecirc;o hoje s&atilde;o dados reais de 5.516 munic&iacute;pios.
       </div>
     </div>
   </div>
+
   <div style="margin:64px 140px 0 160px; background:#0F2038; border-radius:4px; padding:32px 48px; display:flex; align-items:center; gap:24px;">
     <div style="width:6px; height:56px; background:#C08A34; flex-shrink:0;"></div>
     <p style="font:600 24px/1.5 'Source Serif 4'; color:#FFFFFF; margin:0;">
-      Sem essa corre&ccedil;&atilde;o, o modelo pareceria quase perfeito &mdash; e seria in&uacute;til na
-      pr&aacute;tica.
+      Confian&ccedil;a em ci&ecirc;ncia de dados vem de auditar o pr&oacute;prio trabalho, n&atilde;o s&oacute;
+      de acertar a m&eacute;trica.
     </p>
   </div>
+
   <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0F2038; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#B9C4D0;">
     <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
     <span>04 / 11</span>
@@ -297,6 +343,7 @@
 <!-- ===================== SLIDE 5 ===================== -->
 <div class="slide" data-i="5">
 <div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#FAF6EF; font-family:'Public Sans', system-ui, sans-serif; color:#17222E;">
+
   <div style="padding:96px 140px 0 160px;">
     <div style="font:600 18px/1 'Public Sans'; letter-spacing:0.16em; text-transform:uppercase; color:#9C6B1F;">
       Bloco 2 &middot; Compara&ccedil;&atilde;o de Modelos
@@ -305,68 +352,76 @@
       Tr&ecirc;s abordagens testadas, uma vencedora
     </h1>
   </div>
+
   <div style="display:flex; gap:72px; padding:72px 140px 0 160px;">
+
     <div style="flex:1.3; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:48px;">
       <div style="font:600 16px/1 'Public Sans'; letter-spacing:0.1em; text-transform:uppercase; color:#55606B; margin-bottom:8px;">
         Poder preditivo (acaso puro = 0,50)
       </div>
       <div style="font:400 16px/1.4 'Public Sans'; color:#8A93A0; margin-bottom:36px;">
-        Medido prevendo 2023 &mdash; um ano que nenhum modelo viu durante o treino
+        Medido em 20% dos munic&iacute;pios reservados para teste, nunca vistos no treino
       </div>
+
       <div style="display:flex; flex-direction:column; gap:30px;">
         <div>
-          <div style="display:flex; align-items:center; gap:28px;">
-            <div style="width:280px; font:700 20px 'Public Sans'; color:#0F2038;">Random Forest &#9733;</div>
-            <div style="flex:1; height:40px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:83%; background:#C08A34; border-radius:4px;"></div></div>
-            <div style="width:80px; text-align:right; font:700 22px 'Source Serif 4'; color:#0F2038;">0,58</div>
+          <div class="bar-row">
+            <div style="width:280px; font:700 20px 'Public Sans'; color:#0F2038;">XGBoost &#9733;</div>
+            <div class="bar-track"><div class="bar-fill" style="width:99%; background:#C08A34;"></div></div>
+            <div style="width:80px; text-align:right; font:700 22px 'Source Serif 4'; color:#0F2038;">0,79</div>
           </div>
         </div>
         <div>
-          <div style="display:flex; align-items:center; gap:28px;">
-            <div style="width:280px; font:500 20px 'Public Sans'; color:#55606B;">XGBoost</div>
-            <div style="flex:1; height:40px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:83%; background:#9BB4CC; border-radius:4px;"></div></div>
-            <div style="width:80px; text-align:right; font:600 22px 'Source Serif 4'; color:#55606B;">0,58</div>
+          <div class="bar-row">
+            <div style="width:280px; font:500 20px 'Public Sans'; color:#55606B;">Random Forest</div>
+            <div class="bar-track"><div class="bar-fill" style="width:99%; background:#9BB4CC;"></div></div>
+            <div style="width:80px; text-align:right; font:600 22px 'Source Serif 4'; color:#55606B;">0,79</div>
           </div>
         </div>
         <div>
-          <div style="display:flex; align-items:center; gap:28px;">
+          <div class="bar-row">
             <div style="width:280px; font:500 20px 'Public Sans'; color:#55606B;">Regress&atilde;o Log&iacute;stica</div>
-            <div style="flex:1; height:40px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:80%; background:#9BB4CC; border-radius:4px;"></div></div>
-            <div style="width:80px; text-align:right; font:600 22px 'Source Serif 4'; color:#55606B;">0,56</div>
+            <div class="bar-track"><div class="bar-fill" style="width:97%; background:#9BB4CC;"></div></div>
+            <div style="width:80px; text-align:right; font:600 22px 'Source Serif 4'; color:#55606B;">0,78</div>
           </div>
         </div>
       </div>
+
       <div style="margin-top:40px; padding-top:28px; border-top:1px solid #E7DFCE; display:flex; gap:48px;">
         <div>
           <div style="font:600 15px 'Public Sans'; text-transform:uppercase; letter-spacing:0.08em; color:#8A93A0;">Precis&atilde;o</div>
-          <div style="font:700 28px 'Source Serif 4'; color:#0F2038; margin-top:6px;">77,9%</div>
+          <div style="font:700 28px 'Source Serif 4'; color:#0F2038; margin-top:6px;">71,9%</div>
         </div>
         <div>
           <div style="font:600 15px 'Public Sans'; text-transform:uppercase; letter-spacing:0.08em; color:#8A93A0;">Recall</div>
-          <div style="font:700 28px 'Source Serif 4'; color:#0F2038; margin-top:6px;">82,9%</div>
+          <div style="font:700 28px 'Source Serif 4'; color:#0F2038; margin-top:6px;">74,0%</div>
         </div>
         <div>
           <div style="font:600 15px 'Public Sans'; text-transform:uppercase; letter-spacing:0.08em; color:#8A93A0;">Modelo campe&atilde;o</div>
-          <div style="font:700 22px 'Source Serif 4'; color:#9C6B1F; margin-top:6px;">Random Forest</div>
+          <div style="font:700 22px 'Source Serif 4'; color:#9C6B1F; margin-top:6px;">XGBoost</div>
         </div>
       </div>
     </div>
+
     <div style="flex:1; padding-top:16px;">
       <div style="border-left:4px solid #C08A34; padding-left:32px;">
         <p style="font:600 28px/1.45 'Source Serif 4'; color:#0F2038; margin:0;">
-          O resultado &eacute; modesto &mdash; e isso &eacute; honesto, n&atilde;o um erro.
+          Com dados reais, o sinal &eacute; forte e consistente.
         </p>
         <p style="font:400 21px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
-          O desempenho se mant&eacute;m est&aacute;vel entre a valida&ccedil;&atilde;o cruzada e o teste no ano
-          mais recente &mdash; sinal de que n&atilde;o h&aacute; sorte nem "decoreba" envolvida.
+          O desempenho se mant&eacute;m est&aacute;vel entre a valida&ccedil;&atilde;o cruzada e o teste em
+          munic&iacute;pios nunca vistos &mdash; sinal de que n&atilde;o h&aacute; sorte nem "decoreba"
+          envolvida.
         </p>
         <p style="font:400 21px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
-          O teto atual reflete a base de dados dispon&iacute;vel hoje (poucos anos de hist&oacute;rico, sem
-          renda ou infraestrutura escolar) &mdash; n&atilde;o um limite do m&eacute;todo.
+          Isso confirma que hist&oacute;rico municipal, hist&oacute;rico estadual e a meta vigente carregam
+          sinal real sobre o resultado &mdash; muito acima do que a amostra sint&eacute;tica anterior
+          permitia enxergar.
         </p>
       </div>
     </div>
   </div>
+
   <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0F2038; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#B9C4D0;">
     <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
     <span>05 / 11</span>
@@ -377,6 +432,7 @@
 <!-- ===================== SLIDE 6 ===================== -->
 <div class="slide" data-i="6">
 <div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#FAF6EF; font-family:'Public Sans', system-ui, sans-serif; color:#17222E;">
+
   <div style="padding:96px 140px 0 160px;">
     <div style="font:600 18px/1 'Public Sans'; letter-spacing:0.16em; text-transform:uppercase; color:#9C6B1F;">
       Bloco 3 &middot; Principal Insight #1
@@ -385,55 +441,60 @@
       O que mais explica a alfabetiza&ccedil;&atilde;o de um munic&iacute;pio
     </h1>
   </div>
+
   <div style="display:flex; gap:72px; padding:64px 140px 0 160px;">
+
     <div style="flex:1.3; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:48px;">
       <div style="font:600 16px/1 'Public Sans'; letter-spacing:0.1em; text-transform:uppercase; color:#55606B; margin-bottom:32px;">
         Import&acirc;ncia relativa de cada fator no modelo campe&atilde;o
       </div>
+
       <div style="display:flex; flex-direction:column; gap:26px;">
-        <div style="display:flex; align-items:center; gap:24px;">
-          <div style="width:440px; font:600 18px 'Public Sans'; color:#0F2038;">Desempenho do munic&iacute;pio no ano anterior</div>
-          <div style="flex:1; height:34px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:100%; background:#C08A34; border-radius:4px;"></div></div>
-          <div style="width:64px; text-align:right; font:700 20px 'Source Serif 4';">13,6%</div>
+        <div class="frow">
+          <div style="width:420px; font:600 19px 'Public Sans'; color:#0F2038;">Munic&iacute;pio &eacute; do Rio Grande do Sul</div>
+          <div class="ftrack"><div class="ffill" style="width:100%; background:#C08A34;"></div></div>
+          <div style="width:64px; text-align:right; font:700 20px 'Source Serif 4';">16,3%</div>
         </div>
-        <div style="display:flex; align-items:center; gap:24px;">
-          <div style="width:440px; font:500 18px 'Public Sans'; color:#0F2038;">Tend&ecirc;ncia recente (melhorando ou piorando)</div>
-          <div style="flex:1; height:34px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:86%; background:#1D3F63; border-radius:4px;"></div></div>
-          <div style="width:64px; text-align:right; font:600 20px 'Source Serif 4';">11,7%</div>
+        <div class="frow">
+          <div style="width:420px; font:500 19px 'Public Sans'; color:#0F2038;">Munic&iacute;pio &eacute; de Minas Gerais</div>
+          <div class="ftrack"><div class="ffill" style="width:89%;"></div></div>
+          <div style="width:64px; text-align:right; font:600 20px 'Source Serif 4';">14,4%</div>
         </div>
-        <div style="display:flex; align-items:center; gap:24px;">
-          <div style="width:440px; font:500 18px 'Public Sans'; color:#0F2038;">Porte da rede municipal avaliada</div>
-          <div style="flex:1; height:34px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:77%; background:#1D3F63; border-radius:4px;"></div></div>
-          <div style="width:64px; text-align:right; font:600 20px 'Source Serif 4';">10,5%</div>
+        <div class="frow">
+          <div style="width:420px; font:500 19px 'Public Sans'; color:#0F2038;">Munic&iacute;pio &eacute; da Bahia</div>
+          <div class="ftrack"><div class="ffill" style="width:81%;"></div></div>
+          <div style="width:64px; text-align:right; font:600 20px 'Source Serif 4';">13,2%</div>
         </div>
-        <div style="display:flex; align-items:center; gap:24px;">
-          <div style="width:440px; font:500 18px 'Public Sans'; color:#0F2038;">Meta estadual vigente</div>
-          <div style="flex:1; height:34px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:74%; background:#1D3F63; border-radius:4px;"></div></div>
-          <div style="width:64px; text-align:right; font:600 20px 'Source Serif 4';">10,1%</div>
+        <div class="frow">
+          <div style="width:420px; font:500 19px 'Public Sans'; color:#0F2038;">Munic&iacute;pio &eacute; da regi&atilde;o Sul</div>
+          <div class="ftrack"><div class="ffill" style="width:57%;"></div></div>
+          <div style="width:64px; text-align:right; font:600 20px 'Source Serif 4';">9,2%</div>
         </div>
-        <div style="display:flex; align-items:center; gap:24px;">
-          <div style="width:440px; font:500 18px 'Public Sans'; color:#0F2038;">Dist&acirc;ncia da meta no ano anterior</div>
-          <div style="flex:1; height:34px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:59%; background:#1D3F63; border-radius:4px;"></div></div>
-          <div style="width:64px; text-align:right; font:600 20px 'Source Serif 4';">8,0%</div>
+        <div class="frow">
+          <div style="width:420px; font:500 19px 'Public Sans'; color:#0F2038;">Desempenho da UF no ano anterior</div>
+          <div class="ftrack"><div class="ffill" style="width:35%;"></div></div>
+          <div style="width:64px; text-align:right; font:600 20px 'Source Serif 4';">5,7%</div>
         </div>
       </div>
     </div>
+
     <div style="flex:1; padding-top:16px;">
       <div style="border-left:4px solid #C08A34; padding-left:32px;">
         <p style="font:600 28px/1.45 'Source Serif 4'; color:#0F2038; margin:0;">
-          Continuidade de pol&iacute;tica municipal &eacute; o sinal mais forte que temos hoje.
+          O estado de origem pesa mais do que qualquer outro fator isolado.
         </p>
         <p style="font:400 21px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
-          Munic&iacute;pios que j&aacute; vinham melhorando tendem a continuar melhorando &mdash; e o inverso
-          tamb&eacute;m &eacute; verdade.
+          O modelo aprendeu que munic&iacute;pios de certos estados &mdash; RS, MG, BA &mdash; t&ecirc;m um
+          padr&atilde;o sistem&aacute;tico na rela&ccedil;&atilde;o entre desempenho e meta.
         </p>
         <p style="font:400 21px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
-          Metas estaduais e nacionais bem comunicadas aparecem logo em seguida, refor&ccedil;ando o valor de
-          manter metas ambiciosas e vis&iacute;veis.
+          Isso n&atilde;o significa que "ser do RS" causa o resultado &mdash; significa que o estado
+          concentra um padr&atilde;o real que vale a pena entender a fundo. &Eacute; o que fazemos a seguir.
         </p>
       </div>
     </div>
   </div>
+
   <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0F2038; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#B9C4D0;">
     <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
     <span>06 / 11</span>
@@ -444,68 +505,89 @@
 <!-- ===================== SLIDE 7 ===================== -->
 <div class="slide" data-i="7">
 <div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#FAF6EF; font-family:'Public Sans', system-ui, sans-serif; color:#17222E;">
-  <div style="padding:96px 140px 0 160px;">
+
+  <div style="padding:88px 140px 0 160px;">
     <div style="font:600 18px/1 'Public Sans'; letter-spacing:0.16em; text-transform:uppercase; color:#9C6B1F;">
       Bloco 3 &middot; Principal Insight #2
     </div>
-    <h1 style="font:700 48px/1.25 'Source Serif 4'; color:#0F2038; margin:24px 0 0; max-width:1500px;">
-      O modelo enxerga diferen&ccedil;as regionais reais &mdash; mas ainda n&atilde;o podemos dizer qual
-      regi&atilde;o est&aacute; pior de verdade
+    <h1 style="font:700 48px/1.25 'Source Serif 4'; color:#0F2038; margin:20px 0 0; max-width:1600px;">
+      O paradoxo do Sul: desempenho mediano, meta desproporcional
     </h1>
   </div>
-  <div style="display:flex; gap:72px; padding:56px 140px 0 160px; align-items:flex-start;">
-    <div style="flex:1.2; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:44px 48px;">
-      <div style="font:600 16px/1 'Public Sans'; letter-spacing:0.1em; text-transform:uppercase; color:#55606B; margin-bottom:8px;">
-        Taxa de alfabetiza&ccedil;&atilde;o m&eacute;dia por regi&atilde;o (2021&ndash;2023)
+
+  <div style="display:flex; gap:32px; padding:48px 140px 0 160px;">
+
+    <div style="flex:1; background:#FFFFFF; border:1px solid #E7DFCE; border-top:6px solid #A85338; border-radius:4px; padding:32px 30px;">
+      <div style="font:700 15px 'Public Sans'; letter-spacing:0.06em; text-transform:uppercase; color:#A85338;">Rio Grande do Sul</div>
+      <div style="font:700 22px 'Source Serif 4'; color:#0F2038; margin-top:6px;">Meta desproporcional</div>
+      <div style="display:flex; justify-content:space-between; margin-top:24px;">
+        <div>
+          <div style="font:500 14px 'Public Sans'; color:#8A93A0;">Desempenho 2023</div>
+          <div style="font:700 30px 'Source Serif 4'; color:#0F2038;">53,8%</div>
+        </div>
+        <div>
+          <div style="font:500 14px 'Public Sans'; color:#8A93A0;">Meta 2024</div>
+          <div style="font:700 30px 'Source Serif 4'; color:#A85338;">71,4%</div>
+        </div>
       </div>
-      <div style="font:400 15px 'Public Sans'; color:#8A93A0; margin-bottom:28px;">
-        Amostra sint&eacute;tica de demonstra&ccedil;&atilde;o &mdash; ver nota ao lado
-      </div>
-      <div style="display:flex; align-items:flex-end; gap:36px; height:280px;">
-        <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; flex:1;">
-          <div style="font:700 22px 'Source Serif 4'; color:#0F2038; margin-bottom:8px;">57,1%</div>
-          <div style="width:100%; height:180px; background:#9BB4CC; border-radius:3px 3px 0 0;"></div>
-          <div style="font:500 17px 'Public Sans'; color:#55606B; margin-top:12px;">Norte</div>
-        </div>
-        <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; flex:1;">
-          <div style="font:700 22px 'Source Serif 4'; color:#0F2038; margin-bottom:8px;">56,4%</div>
-          <div style="width:100%; height:177px; background:#9BB4CC; border-radius:3px 3px 0 0;"></div>
-          <div style="font:500 17px 'Public Sans'; color:#55606B; margin-top:12px;">Nordeste</div>
-        </div>
-        <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; flex:1;">
-          <div style="font:700 22px 'Source Serif 4'; color:#0F2038; margin-bottom:8px;">55,5%</div>
-          <div style="width:100%; height:174px; background:#9BB4CC; border-radius:3px 3px 0 0;"></div>
-          <div style="font:500 17px 'Public Sans'; color:#55606B; margin-top:12px;">Centro-Oeste</div>
-        </div>
-        <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; flex:1;">
-          <div style="font:700 22px 'Source Serif 4'; color:#0F2038; margin-bottom:8px;">52,8%</div>
-          <div style="width:100%; height:166px; background:#9BB4CC; border-radius:3px 3px 0 0;"></div>
-          <div style="font:500 17px 'Public Sans'; color:#55606B; margin-top:12px;">Sul</div>
-        </div>
-        <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; flex:1;">
-          <div style="font:700 24px 'Source Serif 4'; color:#A85338; margin-bottom:8px;">37,2%</div>
-          <div style="width:100%; height:118px; background:#A85338; border-radius:3px 3px 0 0;"></div>
-          <div style="font:600 17px 'Public Sans'; color:#0F2038; margin-top:12px;">Sudeste</div>
-        </div>
+      <div style="margin-top:20px; padding-top:18px; border-top:1px solid #E7DFCE; font:600 18px 'Public Sans'; color:#A85338;">
+        Apenas 10,5% dos municípios atingem a meta
       </div>
     </div>
-    <div style="flex:1;">
-      <div style="background:#F0DCD3; border-radius:4px; padding:36px 40px;">
-        <div style="font:700 16px 'Public Sans'; letter-spacing:0.08em; text-transform:uppercase; color:#A85338; margin-bottom:14px;">
-          Nota de transpar&ecirc;ncia
+
+    <div style="flex:1; background:#FFFFFF; border:1px solid #E7DFCE; border-top:6px solid #8A5D1F; border-radius:4px; padding:32px 30px;">
+      <div style="font:700 15px 'Public Sans'; letter-spacing:0.06em; text-transform:uppercase; color:#8A5D1F;">Bahia</div>
+      <div style="font:700 22px 'Source Serif 4'; color:#0F2038; margin-top:6px;">Desempenho baixo de fato</div>
+      <div style="display:flex; justify-content:space-between; margin-top:24px;">
+        <div>
+          <div style="font:500 14px 'Public Sans'; color:#8A93A0;">Desempenho 2023</div>
+          <div style="font:700 30px 'Source Serif 4'; color:#0F2038;">36,6%</div>
         </div>
-        <p style="font:500 21px/1.6 'Public Sans'; color:#5C2F20; margin:0;">
-          Esta base &eacute; uma <strong>amostra sint&eacute;tica</strong> constru&iacute;da para desenvolver o
-          pipeline. Esse padr&atilde;o regional n&atilde;o deve ser lido como retrato real do Brasil.
-        </p>
+        <div>
+          <div style="font:500 14px 'Public Sans'; color:#8A93A0;">Meta 2024</div>
+          <div style="font:700 30px 'Source Serif 4'; color:#8A5D1F;">43,7%</div>
+        </div>
       </div>
-      <p style="font:400 22px/1.6 'Public Sans'; color:#55606B; margin:28px 0 0;">
-        O que este gr&aacute;fico prova &eacute; outra coisa: <strong style="color:#0F2038;">o modelo capta e
-        quantifica diferen&ccedil;as regionais</strong>. Assim que plugarmos dados oficiais do INEP, a mesma
-        metodologia vai gerar o diagn&oacute;stico regional verdadeiro, regi&atilde;o a regi&atilde;o.
+      <div style="margin-top:20px; padding-top:18px; border-top:1px solid #E7DFCE; font:600 18px 'Public Sans'; color:#8A5D1F;">
+        Apenas 18,9% dos municípios atingem a meta
+      </div>
+    </div>
+
+    <div style="flex:1; background:#FFFFFF; border:1px solid #E7DFCE; border-top:6px solid #1D3F63; border-radius:4px; padding:32px 30px;">
+      <div style="font:700 15px 'Public Sans'; letter-spacing:0.06em; text-transform:uppercase; color:#1D3F63;">Ceará</div>
+      <div style="font:700 22px 'Source Serif 4'; color:#0F2038; margin-top:6px;">Referência nacional</div>
+      <div style="display:flex; justify-content:space-between; margin-top:24px;">
+        <div>
+          <div style="font:500 14px 'Public Sans'; color:#8A93A0;">Desempenho 2023</div>
+          <div style="font:700 30px 'Source Serif 4'; color:#0F2038;">90,3%</div>
+        </div>
+        <div>
+          <div style="font:500 14px 'Public Sans'; color:#8A93A0;">Meta 2024</div>
+          <div style="font:700 30px 'Source Serif 4'; color:#1D3F63;">78,9%</div>
+        </div>
+      </div>
+      <div style="margin-top:20px; padding-top:18px; border-top:1px solid #E7DFCE; font:600 18px 'Public Sans'; color:#1D3F63;">
+        91,8% dos municípios atingem a meta
+      </div>
+    </div>
+  </div>
+
+  <div style="margin:48px 140px 0 160px; padding:0;">
+    <div style="border-left:4px solid #C08A34; padding-left:32px; max-width:1600px;">
+      <p style="font:600 26px/1.5 'Source Serif 4'; color:#0F2038; margin:0;">
+        Uma mesma métrica &mdash; "taxa de municípios que atingiram a meta" &mdash; esconde dois problemas
+        completamente diferentes.
+      </p>
+      <p style="font:400 21px/1.6 'Public Sans'; color:#55606B; margin:16px 0 0; max-width:1550px;">
+        O Rio Grande do Sul não tem o pior desempenho absoluto do Brasil &mdash; mas recebeu uma meta muito
+        acima da sua trajetória recente, e por isso lidera o ranking de <em>risco relativo</em>. A Bahia tem
+        um problema estrutural real de desempenho. O Ceará mostra que desempenho alto e meta ambiciosa
+        podem coexistir &mdash; referência nacional que inspirou o próprio Compromisso Nacional Criança
+        Alfabetizada. Tratar os três casos com a mesma política seria um erro.
       </p>
     </div>
   </div>
+
   <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0F2038; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#B9C4D0;">
     <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
     <span>07 / 11</span>
@@ -516,6 +598,7 @@
 <!-- ===================== SLIDE 8 ===================== -->
 <div class="slide" data-i="8">
 <div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#FAF6EF; font-family:'Public Sans', system-ui, sans-serif; color:#17222E;">
+
   <div style="padding:96px 140px 0 160px;">
     <div style="font:600 18px/1 'Public Sans'; letter-spacing:0.16em; text-transform:uppercase; color:#9C6B1F;">
       Bloco 4 &middot; Da Predi&ccedil;&atilde;o &agrave; A&ccedil;&atilde;o
@@ -524,41 +607,47 @@
       Um ranking de risco por munic&iacute;pio, atualiz&aacute;vel a cada ciclo
     </h1>
   </div>
+
   <div style="display:flex; gap:72px; padding:64px 140px 0 160px;">
+
     <div style="flex:1.3; background:#FFFFFF; border:1px solid #E7DFCE; border-radius:4px; padding:44px 48px;">
       <div style="font:600 16px/1 'Public Sans'; letter-spacing:0.1em; text-transform:uppercase; color:#55606B; margin-bottom:28px;">
-        Menor probabilidade estimada de alfabetiza&ccedil;&atilde;o &mdash; 2023
+        Menor probabilidade estimada de atingir a meta &mdash; 2024
       </div>
-      <div style="display:flex; align-items:center; gap:24px; padding:14px 0; border-bottom:1px solid #EFE7D6;">
-        <div style="width:280px; font:600 19px 'Public Sans'; color:#0F2038;">Munic&iacute;pio RJ &middot; 1</div>
-        <div style="flex:1; height:30px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:42%; background:#A85338; border-radius:4px;"></div></div>
-        <div style="width:72px; text-align:right; font:700 20px 'Source Serif 4'; color:#A85338;">42%</div>
+
+      <div class="rrow">
+        <div style="width:280px; font:600 19px 'Public Sans'; color:#0F2038;">Ajuricaba (RS)</div>
+        <div class="rtrack"><div class="rfill" style="width:41%;"></div></div>
+        <div style="width:72px; text-align:right; font:700 20px 'Source Serif 4'; color:#A85338;">4,1%</div>
       </div>
-      <div style="display:flex; align-items:center; gap:24px; padding:14px 0; border-bottom:1px solid #EFE7D6;">
-        <div style="width:280px; font:500 19px 'Public Sans'; color:#0F2038;">Munic&iacute;pio SP &middot; 1</div>
-        <div style="flex:1; height:30px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:45%; background:#A85338; border-radius:4px;"></div></div>
-        <div style="width:72px; text-align:right; font:600 20px 'Source Serif 4'; color:#0F2038;">45%</div>
+      <div class="rrow">
+        <div style="width:280px; font:500 19px 'Public Sans'; color:#0F2038;">Espumoso (RS)</div>
+        <div class="rtrack"><div class="rfill" style="width:41%;"></div></div>
+        <div style="width:72px; text-align:right; font:600 20px 'Source Serif 4'; color:#0F2038;">4,1%</div>
       </div>
-      <div style="display:flex; align-items:center; gap:24px; padding:14px 0; border-bottom:1px solid #EFE7D6;">
-        <div style="width:280px; font:500 19px 'Public Sans'; color:#0F2038;">Munic&iacute;pio PE &middot; 1</div>
-        <div style="flex:1; height:30px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:46%; background:#A85338; border-radius:4px;"></div></div>
-        <div style="width:72px; text-align:right; font:600 20px 'Source Serif 4'; color:#0F2038;">46%</div>
+      <div class="rrow">
+        <div style="width:280px; font:500 19px 'Public Sans'; color:#0F2038;">Lago&atilde;o (RS)</div>
+        <div class="rtrack"><div class="rfill" style="width:41%;"></div></div>
+        <div style="width:72px; text-align:right; font:600 20px 'Source Serif 4'; color:#0F2038;">4,1%</div>
       </div>
-      <div style="display:flex; align-items:center; gap:24px; padding:14px 0; border-bottom:1px solid #EFE7D6;">
-        <div style="width:280px; font:500 19px 'Public Sans'; color:#0F2038;">Munic&iacute;pio MG &middot; 3</div>
-        <div style="flex:1; height:30px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:47%; background:#A85338; border-radius:4px;"></div></div>
-        <div style="width:72px; text-align:right; font:600 20px 'Source Serif 4'; color:#0F2038;">47%</div>
+      <div class="rrow">
+        <div style="width:280px; font:500 19px 'Public Sans'; color:#0F2038;">Iju&iacute; (RS)</div>
+        <div class="rtrack"><div class="rfill" style="width:42%;"></div></div>
+        <div style="width:72px; text-align:right; font:600 20px 'Source Serif 4'; color:#0F2038;">4,2%</div>
       </div>
-      <div style="display:flex; align-items:center; gap:24px; padding:14px 0;">
-        <div style="width:280px; font:500 19px 'Public Sans'; color:#0F2038;">Munic&iacute;pio PE &middot; 2</div>
-        <div style="flex:1; height:30px; background:#EFE7D6; border-radius:4px; overflow:hidden;"><div style="height:100%; width:47%; background:#A85338; border-radius:4px;"></div></div>
-        <div style="width:72px; text-align:right; font:600 20px 'Source Serif 4'; color:#0F2038;">47%</div>
+      <div class="rrow" style="border-bottom:none;">
+        <div style="width:280px; font:500 19px 'Public Sans'; color:#0F2038;">Pinheirinho do Vale (RS)</div>
+        <div class="rtrack"><div class="rfill" style="width:44%;"></div></div>
+        <div style="width:72px; text-align:right; font:600 20px 'Source Serif 4'; color:#0F2038;">4,4%</div>
       </div>
+
       <div style="margin-top:28px; padding-top:24px; border-top:1px solid #E7DFCE; font:400 17px/1.5 'Public Sans'; color:#8A93A0;">
-        Nenhum munic&iacute;pio ficou abaixo de 40% em termos absolutos &mdash; o valor est&aacute; em comparar
-        munic&iacute;pios entre si dentro do mesmo ano.
+        1.585 munic&iacute;pios em alto risco &middot; 1.722 em risco moderado &middot; 2.209 em baixo risco.
+        Os 15 primeiros do ranking s&atilde;o todos do RS &mdash; reflexo do peso que o modelo d&aacute;
+        &agrave; UF (ver limita&ccedil;&otilde;es).
       </div>
     </div>
+
     <div style="flex:1; padding-top:16px;">
       <div style="border-left:4px solid #C08A34; padding-left:32px;">
         <p style="font:600 28px/1.45 'Source Serif 4'; color:#0F2038; margin:0;">
@@ -567,15 +656,17 @@
         <p style="font:400 21px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
           Com esse ranking, a secretaria pode direcionar visitas t&eacute;cnicas, refor&ccedil;o pedag&oacute;gico
           e material did&aacute;tico para os munic&iacute;pios de maior risco relativo <strong style="color:#0F2038;">durante</strong>
-          o ciclo letivo.
+          o ciclo de avalia&ccedil;&atilde;o.
         </p>
         <p style="font:400 21px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
-          O ranking &eacute; recalculado a cada novo ciclo de dados, acompanhando a evolu&ccedil;&atilde;o de cada
-          munic&iacute;pio.
+          O ranking j&aacute; &eacute; &uacute;til para comparar <strong style="color:#0F2038;">estados</strong>
+          entre si; para diferenciar risco dentro de um mesmo estado com mais precis&atilde;o, precisamos de
+          mais vari&aacute;veis (Se&ccedil;&atilde;o de limita&ccedil;&otilde;es).
         </p>
       </div>
     </div>
   </div>
+
   <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0F2038; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#B9C4D0;">
     <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
     <span>08 / 11</span>
@@ -586,6 +677,7 @@
 <!-- ===================== SLIDE 9 ===================== -->
 <div class="slide" data-i="9">
 <div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#FAF6EF; font-family:'Public Sans', system-ui, sans-serif; color:#17222E;">
+
   <div style="padding:88px 140px 0 160px;">
     <div style="font:600 18px/1 'Public Sans'; letter-spacing:0.16em; text-transform:uppercase; color:#9C6B1F;">
       Bloco 4 &middot; Da Predi&ccedil;&atilde;o &agrave; A&ccedil;&atilde;o
@@ -594,49 +686,54 @@
       Quatro perfis de munic&iacute;pio, quatro estrat&eacute;gias diferentes
     </h1>
     <p style="font:400 22px/1.55 'Public Sans'; color:#55606B; max-width:1200px; margin:20px 0 0;">
-      Agrupamento por padr&atilde;o hist&oacute;rico e dist&acirc;ncia da meta (81 munic&iacute;pios, K-Means).
+      Agrupamento por padr&atilde;o hist&oacute;rico e dist&acirc;ncia da meta (4.919 munic&iacute;pios com hist&oacute;rico completo, K-Means).
     </p>
   </div>
+
   <div style="display:flex; flex-direction:column; gap:28px; padding:44px 140px 0 160px;">
+
     <div style="display:flex; gap:28px;">
-      <div style="flex:1; border-radius:4px; padding:32px 36px; background:#FFFFFF; border:1px solid #E7DFCE; border-left:6px solid #1D3F63;">
-        <span style="display:inline-block; font:600 14px 'Public Sans'; letter-spacing:0.06em; text-transform:uppercase; padding:5px 12px; border-radius:3px; background:#DCE6F0; color:#1D3F63;">Refer&ecirc;ncia &middot; 21 munic&iacute;pios</span>
-        <h3 style="font:700 24px 'Source Serif 4'; color:#0F2038; margin:16px 0 8px;">Meta ambiciosa e superada</h3>
+      <div class="cell" style="background:#FFFFFF; border:1px solid #E7DFCE; border-left:6px solid #1D3F63;">
+        <span class="badge" style="background:#DCE6F0; color:#1D3F63;">Refer&ecirc;ncia &middot; 1.384 munic&iacute;pios</span>
+        <h3 style="font:700 24px 'Source Serif 4'; color:#0F2038; margin:16px 0 8px;">Meta alta e superada</h3>
         <p style="font:400 18px/1.5 'Public Sans'; color:#55606B; margin:0;">
-          Meta m&eacute;dia 55,2% &middot; desempenho hist&oacute;rico 62,1% &middot; +6,9 p.p. acima da meta.
+          Desempenho 2023: 83,7% &middot; meta 2024: 78,3% &middot; j&aacute; acima da meta.
         </p>
       </div>
-      <div style="flex:1; border-radius:4px; padding:32px 36px; background:#FFFFFF; border:1px solid #E7DFCE; border-left:6px solid #9BB4CC;">
-        <span style="display:inline-block; font:600 14px 'Public Sans'; letter-spacing:0.06em; text-transform:uppercase; padding:5px 12px; border-radius:3px; background:#EDF2F7; color:#3D5875;">Est&aacute;vel &middot; 20 munic&iacute;pios</span>
-        <h3 style="font:700 24px 'Source Serif 4'; color:#0F2038; margin:16px 0 8px;">Cumprindo meta modesta</h3>
+      <div class="cell" style="background:#FFFFFF; border:1px solid #E7DFCE; border-left:6px solid #9BB4CC;">
+        <span class="badge" style="background:#EDF2F7; color:#3D5875;">Consistente &middot; 1.496 munic&iacute;pios</span>
+        <h3 style="font:700 24px 'Source Serif 4'; color:#0F2038; margin:16px 0 8px;">Desempenho e meta compat&iacute;veis</h3>
         <p style="font:400 18px/1.5 'Public Sans'; color:#55606B; margin:0;">
-          Meta m&eacute;dia 46,4% &middot; desempenho hist&oacute;rico 52,4% &middot; +6,0 p.p. acima da meta.
+          Desempenho 2023: 65,0% &middot; meta 2024: 67,0% &middot; muito perto de atingir.
         </p>
       </div>
     </div>
+
     <div style="display:flex; gap:28px;">
-      <div style="flex:1; border-radius:4px; padding:32px 36px; background:#FFFFFF; border:1px solid #E7DFCE; border-left:6px solid #C08A34;">
-        <span style="display:inline-block; font:600 14px 'Public Sans'; letter-spacing:0.06em; text-transform:uppercase; padding:5px 12px; border-radius:3px; background:#F3E4CB; color:#8A5D1F;">Aten&ccedil;&atilde;o &middot; 18 munic&iacute;pios</span>
-        <h3 style="font:700 24px 'Source Serif 4'; color:#0F2038; margin:16px 0 8px;">Meta ambiciosa, resultado abaixo</h3>
+      <div class="cell" style="background:#FFFFFF; border:1px solid #E7DFCE; border-left:6px solid #C08A34;">
+        <span class="badge" style="background:#F3E4CB; color:#8A5D1F;">Moderado &middot; 1.136 munic&iacute;pios</span>
+        <h3 style="font:700 24px 'Source Serif 4'; color:#0F2038; margin:16px 0 8px;">Desempenho e meta medianos</h3>
         <p style="font:400 18px/1.5 'Public Sans'; color:#55606B; margin:0;">
-          Meta m&eacute;dia 55,9% &middot; desempenho hist&oacute;rico 49,1% &middot; -6,8 p.p. abaixo da meta.
+          Desempenho 2023: 48,5% &middot; meta 2024: 53,5% &middot; gap moderado a fechar.
         </p>
       </div>
-      <div style="flex:1; border-radius:4px; padding:32px 36px; background:#FFFFFF; border:1px solid #E7DFCE; border-left:6px solid #A85338;">
-        <span style="display:inline-block; font:600 14px 'Public Sans'; letter-spacing:0.06em; text-transform:uppercase; padding:5px 12px; border-radius:3px; background:#F0DCD3; color:#A85338;">Priorit&aacute;rio &middot; 22 munic&iacute;pios</span>
-        <h3 style="font:700 24px 'Source Serif 4'; color:#0F2038; margin:16px 0 8px;">Abaixo at&eacute; de meta modesta</h3>
+      <div class="cell" style="background:#FFFFFF; border:1px solid #E7DFCE; border-left:6px solid #A85338;">
+        <span class="badge" style="background:#F0DCD3; color:#A85338;">Priorit&aacute;rio &middot; 903 munic&iacute;pios</span>
+        <h3 style="font:700 24px 'Source Serif 4'; color:#0F2038; margin:16px 0 8px;">Desempenho baixo</h3>
         <p style="font:400 18px/1.5 'Public Sans'; color:#55606B; margin:0;">
-          Meta m&eacute;dia 47,3% &middot; desempenho hist&oacute;rico 39,2% &middot; -8,1 p.p. abaixo da meta.
+          Desempenho 2023: 32,3% &middot; meta 2024: 38,8% &middot; precisa de investimento estrutural.
         </p>
       </div>
     </div>
   </div>
+
   <div style="margin:36px 140px 0 160px; padding:0;">
     <p style="font:600 24px/1.5 'Source Serif 4'; color:#0F2038; border-left:4px solid #C08A34; padding-left:32px; margin:0; max-width:1400px;">
-      Uma pol&iacute;tica &uacute;nica para 5.570 munic&iacute;pios n&atilde;o funciona &mdash; agrupar por
+      Uma pol&iacute;tica &uacute;nica para 5.516 munic&iacute;pios n&atilde;o funciona &mdash; agrupar por
       padr&atilde;o permite estrat&eacute;gias sob medida para cada grupo.
     </p>
   </div>
+
   <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0F2038; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#B9C4D0;">
     <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
     <span>09 / 11</span>
@@ -647,6 +744,7 @@
 <!-- ===================== SLIDE 10 ===================== -->
 <div class="slide" data-i="10">
 <div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#FAF6EF; font-family:'Public Sans', system-ui, sans-serif; color:#17222E;">
+
   <div style="padding:96px 140px 0 160px;">
     <div style="font:600 18px/1 'Public Sans'; letter-spacing:0.16em; text-transform:uppercase; color:#9C6B1F;">
       Bloco 5 &middot; Honestidade T&eacute;cnica
@@ -655,31 +753,33 @@
       O que este modelo ainda n&atilde;o sabe
     </h1>
   </div>
+
   <div style="display:flex; gap:72px; padding:64px 140px 0 160px;">
+
     <div style="flex:1.2;">
-      <div style="display:flex; gap:24px; align-items:flex-start; padding:22px 0; border-bottom:1px solid #E7DFCE;">
+      <div class="litem">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" style="flex-shrink:0; margin-top:4px;">
           <circle cx="12" cy="12" r="10" stroke="#A85338" stroke-width="2"/>
           <path d="M12 7v6" stroke="#A85338" stroke-width="2" stroke-linecap="round"/>
           <circle cx="12" cy="16.5" r="1.2" fill="#A85338"/>
         </svg>
         <div>
-          <div style="font:700 22px 'Public Sans'; color:#0F2038;">Base ainda &eacute; uma amostra sint&eacute;tica</div>
-          <div style="font:400 19px/1.5 'Public Sans'; color:#55606B; margin-top:6px;">N&atilde;o &eacute; o dado oficial do INEP/Censo Escolar &mdash; os n&uacute;meros absolutos n&atilde;o devem ser lidos como estat&iacute;stica real.</div>
+          <div style="font:700 22px 'Public Sans'; color:#0F2038;">Granularidade municipal, n&atilde;o individual</div>
+          <div style="font:400 19px/1.5 'Public Sans'; color:#55606B; margin-top:6px;">A tabela real de alunos s&oacute; existe no BigQuery da equipe da Fase 2 &mdash; o modelo prev&ecirc; o resultado agregado do munic&iacute;pio, n&atilde;o de um aluno espec&iacute;fico.</div>
         </div>
       </div>
-      <div style="display:flex; gap:24px; align-items:flex-start; padding:22px 0; border-bottom:1px solid #E7DFCE;">
+      <div class="litem">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" style="flex-shrink:0; margin-top:4px;">
           <circle cx="12" cy="12" r="10" stroke="#A85338" stroke-width="2"/>
           <path d="M12 7v6" stroke="#A85338" stroke-width="2" stroke-linecap="round"/>
           <circle cx="12" cy="16.5" r="1.2" fill="#A85338"/>
         </svg>
         <div>
-          <div style="font:700 22px 'Public Sans'; color:#0F2038;">Pouco hist&oacute;rico por munic&iacute;pio</div>
-          <div style="font:400 19px/1.5 'Public Sans'; color:#55606B; margin-top:6px;">Apenas duas transi&ccedil;&otilde;es ano a ano (2021&rarr;2022&rarr;2023) para aprender tend&ecirc;ncias.</div>
+          <div style="font:700 22px 'Public Sans'; color:#0F2038;">Um &uacute;nico ano-alvo dispon&iacute;vel</div>
+          <div style="font:400 19px/1.5 'Public Sans'; color:#55606B; margin-top:6px;">S&oacute; 2024 tem meta e resultado completos; 2023 serve apenas como hist&oacute;rico defasado &mdash; ainda n&atilde;o d&aacute; para aprender tend&ecirc;ncias de m&eacute;dio prazo por munic&iacute;pio.</div>
         </div>
       </div>
-      <div style="display:flex; gap:24px; align-items:flex-start; padding:22px 0; border-bottom:1px solid #E7DFCE;">
+      <div class="litem">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" style="flex-shrink:0; margin-top:4px;">
           <circle cx="12" cy="12" r="10" stroke="#A85338" stroke-width="2"/>
           <path d="M12 7v6" stroke="#A85338" stroke-width="2" stroke-linecap="round"/>
@@ -690,18 +790,19 @@
           <div style="font:400 19px/1.5 'Public Sans'; color:#55606B; margin-top:6px;">Renda, IDH, infraestrutura escolar e forma&ccedil;&atilde;o docente ainda n&atilde;o est&atilde;o na base.</div>
         </div>
       </div>
-      <div style="display:flex; gap:24px; align-items:flex-start; padding:22px 0;">
+      <div class="litem" style="border-bottom:none;">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" style="flex-shrink:0; margin-top:4px;">
           <circle cx="12" cy="12" r="10" stroke="#A85338" stroke-width="2"/>
           <path d="M12 7v6" stroke="#A85338" stroke-width="2" stroke-linecap="round"/>
           <circle cx="12" cy="16.5" r="1.2" fill="#A85338"/>
         </svg>
         <div>
-          <div style="font:700 22px 'Public Sans'; color:#0F2038;">O salto 2021&rarr;2023 &eacute; da amostra, n&atilde;o do Brasil real</div>
-          <div style="font:400 19px/1.5 'Public Sans'; color:#55606B; margin-top:6px;">Auditamos o gerador dos dados: o crescimento &eacute; um artefato de constru&ccedil;&atilde;o da amostra sint&eacute;tica &mdash; ainda assim, torna prever "o futuro" a partir s&oacute; do passado uma tarefa dif&iacute;cil de testar aqui.</div>
+          <div style="font:700 22px 'Public Sans'; color:#0F2038;">Depend&ecirc;ncia forte da identidade da UF</div>
+          <div style="font:400 19px/1.5 'Public Sans'; color:#55606B; margin-top:6px;">O modelo campe&atilde;o se apoia fortemente em "de qual estado o munic&iacute;pio &eacute;" &mdash; &oacute;timo para comparar estados, mas ainda pouco preciso para diferenciar risco dentro de um mesmo estado.</div>
         </div>
       </div>
     </div>
+
     <div style="flex:1; padding-top:16px;">
       <div style="background:#0F2038; border-radius:4px; padding:44px 40px;">
         <p style="font:600 30px/1.45 'Source Serif 4'; color:#FFFFFF; margin:0;">
@@ -714,6 +815,7 @@
       </div>
     </div>
   </div>
+
   <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0F2038; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#B9C4D0;">
     <span>Predi&ccedil;&atilde;o e Intelig&ecirc;ncia Anal&iacute;tica para Alfabetiza&ccedil;&atilde;o no Brasil</span>
     <span>10 / 11</span>
@@ -724,36 +826,41 @@
 <!-- ===================== SLIDE 11 ===================== -->
 <div class="slide" data-i="11">
 <div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#0F2038; font-family:'Public Sans', system-ui, sans-serif; color:#F3E4CB;">
+
   <div style="position:absolute; top:-260px; left:-200px; width:820px; height:820px; border-radius:50%; background:radial-gradient(circle at 60% 60%, #1D3F63 0%, #0F2038 70%); opacity:0.9;"></div>
   <div style="position:absolute; left:0; top:0; bottom:0; width:14px; background:#C08A34;"></div>
+
   <div style="position:relative; padding:104px 140px 0 160px;">
     <div style="font:600 20px/1 'Public Sans'; letter-spacing:0.18em; text-transform:uppercase; color:#C08A34;">
       Bloco 6 &middot; Encerramento
     </div>
     <h1 style="font:700 62px/1.2 'Source Serif 4'; color:#FFFFFF; margin:28px 0 0; max-width:1200px;">
-      Da amostra sint&eacute;tica ao piloto real
+      De um radar real a um piloto validado em campo
     </h1>
+
     <div style="display:flex; gap:48px; margin-top:64px;">
       <div style="flex:1; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); border-radius:4px; padding:32px 30px;">
         <div style="font:700 26px 'Source Serif 4'; color:#C08A34;">1</div>
-        <div style="font:700 21px/1.35 'Public Sans'; color:#FFFFFF; margin-top:14px;">Plugar dados oficiais</div>
-        <div style="font:400 18px/1.5 'Public Sans'; color:#B9C4D0; margin-top:10px;">INEP, Censo Escolar, PNAD, FUNDEB e IBGE, mantendo o mesmo pipeline.</div>
+        <div style="font:700 21px/1.35 'Public Sans'; color:#FFFFFF; margin-top:14px;">Chegar ao n&iacute;vel do aluno</div>
+        <div style="font:400 18px/1.5 'Public Sans'; color:#B9C4D0; margin-top:10px;">Obter acesso &agrave; tabela real de alunos no BigQuery da Fase 2, mantendo o mesmo pipeline.</div>
       </div>
       <div style="flex:1; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); border-radius:4px; padding:32px 30px;">
         <div style="font:700 26px 'Source Serif 4'; color:#C08A34;">2</div>
-        <div style="font:700 21px/1.35 'Public Sans'; color:#FFFFFF; margin-top:14px;">Validar em campo</div>
-        <div style="font:400 18px/1.5 'Public Sans'; color:#B9C4D0; margin-top:10px;">Radar de risco testado com dados reais em 1&ndash;2 estados-piloto.</div>
+        <div style="font:700 21px/1.35 'Public Sans'; color:#FFFFFF; margin-top:14px;">Enriquecer com dados reais</div>
+        <div style="font:400 18px/1.5 'Public Sans'; color:#B9C4D0; margin-top:10px;">Censo Escolar, PNAD, IBGE &mdash; para diferenciar risco dentro de um mesmo estado.</div>
       </div>
       <div style="flex:1; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); border-radius:4px; padding:32px 30px;">
         <div style="font:700 26px 'Source Serif 4'; color:#C08A34;">3</div>
-        <div style="font:700 21px/1.35 'Public Sans'; color:#FFFFFF; margin-top:14px;">Retreinar a cada ciclo</div>
-        <div style="font:400 18px/1.5 'Public Sans'; color:#B9C4D0; margin-top:10px;">Indicadores educacionais mudam com o tempo &mdash; e nesta etapa j&aacute; auditamos e corrigimos leituras equivocadas da amostra; dados reais exigem a mesma disciplina.</div>
+        <div style="font:700 21px/1.35 'Public Sans'; color:#FFFFFF; margin-top:14px;">Investigar a pol&iacute;tica de metas</div>
+        <div style="font:400 18px/1.5 'Public Sans'; color:#B9C4D0; margin-top:10px;">Entender, junto ao CNCA, por que estados como o RS recebem metas t&atilde;o acima do seu hist&oacute;rico recente.</div>
       </div>
     </div>
+
     <p style="font:600 30px/1.5 'Source Serif 4'; color:#FFFFFF; margin:72px 0 0; max-width:1100px;">
       Obrigado. Ficamos &agrave; disposi&ccedil;&atilde;o para aprofundar qualquer um desses pontos.
     </p>
   </div>
+
   <div style="position:absolute; bottom:0; left:0; right:0; height:64px; background:#0A1729; display:flex; align-items:center; justify-content:space-between; padding:0 160px; font:500 16px 'Public Sans'; color:#8EA0B4;">
     <span>[link do reposit&oacute;rio] &middot; [contato da equipe]</span>
     <span>11 / 11</span>

@@ -36,29 +36,29 @@
         Poder preditivo (acaso puro = 0,50)
       </div>
       <div style="font:400 16px/1.4 'Public Sans'; color:#8A93A0; margin-bottom:36px;">
-        Medido prevendo 2023 &mdash; um ano que nenhum modelo viu durante o treino
+        Medido em 20% dos munic&iacute;pios reservados para teste, nunca vistos no treino
       </div>
 
       <div style="display:flex; flex-direction:column; gap:30px;">
         <div>
           <div class="bar-row">
-            <div style="width:280px; font:700 20px 'Public Sans'; color:#0F2038;">Random Forest &#9733;</div>
-            <div class="bar-track"><div class="bar-fill" style="width:83%; background:#C08A34;"></div></div>
-            <div style="width:80px; text-align:right; font:700 22px 'Source Serif 4'; color:#0F2038;">0,58</div>
+            <div style="width:280px; font:700 20px 'Public Sans'; color:#0F2038;">XGBoost &#9733;</div>
+            <div class="bar-track"><div class="bar-fill" style="width:99%; background:#C08A34;"></div></div>
+            <div style="width:80px; text-align:right; font:700 22px 'Source Serif 4'; color:#0F2038;">0,79</div>
           </div>
         </div>
         <div>
           <div class="bar-row">
-            <div style="width:280px; font:500 20px 'Public Sans'; color:#55606B;">XGBoost</div>
-            <div class="bar-track"><div class="bar-fill" style="width:83%; background:#9BB4CC;"></div></div>
-            <div style="width:80px; text-align:right; font:600 22px 'Source Serif 4'; color:#55606B;">0,58</div>
+            <div style="width:280px; font:500 20px 'Public Sans'; color:#55606B;">Random Forest</div>
+            <div class="bar-track"><div class="bar-fill" style="width:99%; background:#9BB4CC;"></div></div>
+            <div style="width:80px; text-align:right; font:600 22px 'Source Serif 4'; color:#55606B;">0,79</div>
           </div>
         </div>
         <div>
           <div class="bar-row">
             <div style="width:280px; font:500 20px 'Public Sans'; color:#55606B;">Regress&atilde;o Log&iacute;stica</div>
-            <div class="bar-track"><div class="bar-fill" style="width:80%; background:#9BB4CC;"></div></div>
-            <div style="width:80px; text-align:right; font:600 22px 'Source Serif 4'; color:#55606B;">0,56</div>
+            <div class="bar-track"><div class="bar-fill" style="width:97%; background:#9BB4CC;"></div></div>
+            <div style="width:80px; text-align:right; font:600 22px 'Source Serif 4'; color:#55606B;">0,78</div>
           </div>
         </div>
       </div>
@@ -66,15 +66,15 @@
       <div style="margin-top:40px; padding-top:28px; border-top:1px solid #E7DFCE; display:flex; gap:48px;">
         <div>
           <div style="font:600 15px 'Public Sans'; text-transform:uppercase; letter-spacing:0.08em; color:#8A93A0;">Precis&atilde;o</div>
-          <div style="font:700 28px 'Source Serif 4'; color:#0F2038; margin-top:6px;">77,9%</div>
+          <div style="font:700 28px 'Source Serif 4'; color:#0F2038; margin-top:6px;">71,9%</div>
         </div>
         <div>
           <div style="font:600 15px 'Public Sans'; text-transform:uppercase; letter-spacing:0.08em; color:#8A93A0;">Recall</div>
-          <div style="font:700 28px 'Source Serif 4'; color:#0F2038; margin-top:6px;">82,9%</div>
+          <div style="font:700 28px 'Source Serif 4'; color:#0F2038; margin-top:6px;">74,0%</div>
         </div>
         <div>
           <div style="font:600 15px 'Public Sans'; text-transform:uppercase; letter-spacing:0.08em; color:#8A93A0;">Modelo campe&atilde;o</div>
-          <div style="font:700 22px 'Source Serif 4'; color:#9C6B1F; margin-top:6px;">Random Forest</div>
+          <div style="font:700 22px 'Source Serif 4'; color:#9C6B1F; margin-top:6px;">XGBoost</div>
         </div>
       </div>
     </div>
@@ -82,15 +82,17 @@
     <div style="flex:1; padding-top:16px;">
       <div style="border-left:4px solid #C08A34; padding-left:32px;">
         <p style="font:600 28px/1.45 'Source Serif 4'; color:#0F2038; margin:0;">
-          O resultado &eacute; modesto &mdash; e isso &eacute; honesto, n&atilde;o um erro.
+          Com dados reais, o sinal &eacute; forte e consistente.
         </p>
         <p style="font:400 21px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
-          O desempenho se mant&eacute;m est&aacute;vel entre a valida&ccedil;&atilde;o cruzada e o teste no ano
-          mais recente &mdash; sinal de que n&atilde;o h&aacute; sorte nem "decoreba" envolvida.
+          O desempenho se mant&eacute;m est&aacute;vel entre a valida&ccedil;&atilde;o cruzada e o teste em
+          munic&iacute;pios nunca vistos &mdash; sinal de que n&atilde;o h&aacute; sorte nem "decoreba"
+          envolvida.
         </p>
         <p style="font:400 21px/1.6 'Public Sans'; color:#55606B; margin:20px 0 0;">
-          O teto atual reflete a base de dados dispon&iacute;vel hoje (poucos anos de hist&oacute;rico, sem
-          renda ou infraestrutura escolar) &mdash; n&atilde;o um limite do m&eacute;todo.
+          Isso confirma que hist&oacute;rico municipal, hist&oacute;rico estadual e a meta vigente carregam
+          sinal real sobre o resultado &mdash; muito acima do que a amostra sint&eacute;tica anterior
+          permitia enxergar.
         </p>
       </div>
     </div>
